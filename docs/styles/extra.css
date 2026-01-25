@@ -1,12 +1,12 @@
 /* =======================================================
-   HEADER + TABS (PURPLE GRADIENT)
+   HEADER + TABS (PALE GREEN GRADIENT)
    ======================================================= */
 .md-header {
-  background: linear-gradient(90deg, #7c3aed, #a78bfa) !important;
-  color: #fff !important;
+  background: linear-gradient(90deg, #98e2c6, #bbf7d0) !important;
+  color: #1f2937 !important; /* dark gray text for contrast */
 }
 .md-tabs {
-  background: linear-gradient(90deg, #7c3aed, #a78bfa) !important;
+  background: linear-gradient(90deg, #98e2c6, #bbf7d0) !important;
 }
 .md-header__inner,
 .md-tabs__inner {
@@ -17,10 +17,10 @@
 .md-search__icon,
 .md-header__option {
   background-color: transparent !important;
-  color: #fff !important;
+  color: #1f2937 !important;
 }
 .md-tabs__link:hover {
-  background-color: rgba(255, 255, 255, 0.12) !important;
+  background-color: rgba(152, 226, 198, 0.15) !important;
 }
 
 /* =======================================================
@@ -44,8 +44,8 @@
   margin-right: 8px !important;
   margin-bottom: 10px !important;
   padding: 8px 12px !important;
-  background: linear-gradient(90deg, #7c3aed, #a78bfa) !important;
-  color: #fff !important;
+  background: linear-gradient(90deg, #98e2c6, #bbf7d0) !important;
+  color: #1f2937 !important;
   border-radius: 12px !important;
   font-weight: 700 !important;
   letter-spacing: 0.2px !important;
@@ -61,8 +61,8 @@
 
 /* ACTIVE PAGE LINK */
 .md-nav--primary .md-nav__link--active {
-  background-color: rgba(167, 139, 250, 0.20) !important;
-  color: #7c3aed !important;
+  background-color: rgba(152, 226, 198, 0.20) !important;
+  color: #0f766e !important; /* darker teal for active state */
   font-weight: 700 !important;
 }
 
@@ -75,8 +75,8 @@
 
 /* TOC header pill */
 .md-nav--secondary .md-nav__title {
-  background: linear-gradient(90deg, #7c3aed, #a78bfa) !important;
-  color: #fff !important;
+  background: linear-gradient(90deg, #98e2c6, #bbf7d0) !important;
+  color: #1f2937 !important;
   border-radius: 10px;
   padding: 10px 12px !important;
   margin-bottom: 10px !important;
@@ -91,13 +91,13 @@
 
 /* TOC hover */
 .md-nav--secondary .md-nav__link:hover {
-  background-color: rgba(167, 139, 250, 0.10);
+  background-color: rgba(187, 247, 208, 0.10);
 }
 
 /* TOC active */
 .md-nav--secondary .md-nav__link--active {
-  background-color: rgba(167, 139, 250, 0.20) !important;
-  color: #7c3aed !important;
+  background-color: rgba(152, 226, 198, 0.20) !important;
+  color: #0f766e !important;
   font-weight: 700 !important;
 }
 .md-nav--secondary .md-nav__link--active * {
