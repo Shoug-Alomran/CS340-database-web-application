@@ -53,9 +53,13 @@ The EER diagram visually representing these entities and relationships is being 
 
 > **Note:**  
 > The final EER diagram will include:
+
 > - Primary key attributes
+
 > - Relationship cardinalities (1:1, 1:N, M:N)
+
 > - Participation constraints
+
 > - Any specialization or weak entities (if applicable)
 
 The completed diagram will be used directly to derive the relational schema in **Phase 3 – Logical Design**.
