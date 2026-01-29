@@ -9,10 +9,15 @@ The application manages user data, family members, health events, risk warnings,
 
 ## Target Users and Usage Scenarios
 Sillah’s target audience includes:
+
 - Citizens / families (primary users)
+
 - Healthcare providers
+
 - Administrators
 
 Example usage scenarios:
+
 - Users input family medical history and receive alerts if hereditary risks are detected.
+
 - Users can input a specific condition and age of onset to improve tracking and analysis.

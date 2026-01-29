@@ -30,38 +30,38 @@ theme:
     code: Fira Code
 
 nav:
-  - Home: Index.md
+  - Home: index.md
 
   - Project Overview:
       - Introduction: overview/introduction.md
       - Team Members: overview/team.md
       - Technology Stack: overview/technology.md
 
-  - Phase 0 – Proposal:
+  - Phase 0 - Proposal:
       - Team Formation: Phase 0/team-formation.md
       - Project Idea: Phase 0/project-idea.md
 
-  - Phase 1 – Planning:
+  - Phase 1 - Planning:
       - Application Concept: Phase 1/application-concept.md
       - Requirements: Phase 1/requirements.md
-      - System Architecture: phase 1/architecture.md
+      - System Architecture: Phase 1/architecture.md
       - UI Wireframes: Phase 1/ui-wireframes.md
 
-  - Phase 2 – Conceptual Design:
+  - Phase 2 - Conceptual Design:
       - EER Diagram: Phase 2/eer-diagram.md
       - Design Explanation: Phase 2/design-explanation.md
 
-  - Phase 3 – Logical Design:
+  - Phase 3 - Logical Design:
       - Relational Schema: Phase 3/relational-schema.md
       - Data Dictionary: Phase 3/data-dictionary.md
       - Mapping Explanation: Phase 3/mapping.md
 
-  - Phase 4 – Database Implementation:
+  - Phase 4 - Database Implementation:
       - SQL DDL Scripts: Phase 4/sql-ddl.md
       - Sample Data: Phase 4/sample-data.md
       - Constraints & Integrity: Phase 4/constraints.md
 
-  - Phase 5 – Application:
+  - Phase 5 - Application:
       - Backend Logic: Phase 5/backend.md
       - SQL Queries:
           - Basic Queries: Phase 5/basic-queries.md
