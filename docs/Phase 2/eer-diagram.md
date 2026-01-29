@@ -8,9 +8,13 @@ The EER model captures the main entities in the system, their attributes, relati
 
 ## Purpose of the EER Diagram
 The EER diagram is designed to:
+
 - Identify all major **data entities** required by the system
+
 - Define **relationships** between entities
+
 - Capture **cardinality and participation constraints**
+
 - Serve as the foundation for the logical relational schema in Phase 3
 
 ---
