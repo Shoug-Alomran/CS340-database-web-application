@@ -1,4 +1,4 @@
-site_name: CS 340 – Database Web Application
+site_name: CS 340 - Database Web Application
 site_url: https://database.shoug-tech.com
 
 theme:
@@ -33,9 +33,7 @@ nav:
   - Home: index.md
 
   - Project Overview:
-      - Introduction: overview/introduction.md
-      - Team Members: overview/team.md
-      - Technology Stack: overview/technology.md
+      - Introduction: Project Overview/introduction.md
 
   - Phase 0 - Proposal:
       - Team Formation: Phase 0/team-formation.md

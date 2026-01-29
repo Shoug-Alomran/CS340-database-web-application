@@ -1,31 +1,79 @@
 /* =======================================================
-   HEADER + TABS (PALE GREEN GRADIENT)
+   HEADER + TABS (PALE GREEN GRADIENT) — FIXED
    ======================================================= */
-.md-header {
-  background: linear-gradient(90deg, #98e2c6, #bbf7d0) !important;
-  color: #1f2937 !important; /* dark gray text for contrast */
-}
+
+.md-header,
 .md-tabs {
   background: linear-gradient(90deg, #98e2c6, #bbf7d0) !important;
 }
+
+/* Make header + tab text readable (force dark text) */
+.md-header,
+.md-header * ,
+.md-tabs,
+.md-tabs * {
+  color: #0f172a !important; /* slate-900 */
+}
+
+/* Keep inner containers transparent */
 .md-header__inner,
 .md-tabs__inner {
   background: transparent !important;
 }
+
+/* Search field + icons in header */
 .md-search__form,
 .md-search__input,
 .md-search__icon,
-.md-header__option {
+.md-header__option,
+.md-header__button {
   background-color: transparent !important;
-  color: #1f2937 !important;
+  color: #0f172a !important;
 }
+
+/* Tabs: improve readability + spacing */
+.md-tabs__link {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  opacity: 1 !important;
+}
+
+/* Active tab: clearer contrast */
+.md-tabs__link--active {
+  color: #064e3b !important;              /* deep green */
+  border-bottom: 3px solid #064e3b !important;
+}
+
+/* Hover */
 .md-tabs__link:hover {
-  background-color: rgba(152, 226, 198, 0.15) !important;
+  background-color: rgba(15, 23, 42, 0.06) !important; /* subtle dark hover */
+  color: #064e3b !important;
+}
+
+/* =======================================================
+   FIX: TAB TEXT CUT-OFF (ALLOW WRAP)
+   ======================================================= */
+
+.md-tabs__list {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.md-tabs__item {
+  white-space: normal !important;
+}
+
+.md-tabs__link {
+  padding: 0.6rem 0.9rem !important;
+  line-height: 1.2 !important;
+  text-align: center !important;
+  font-size: 0.88rem !important;
 }
 
 /* =======================================================
    LEFT SIDEBAR (PRIMARY NAV)
    ======================================================= */
+
 /* Reset base nav links */
 .md-nav--primary .md-nav__link {
   background: transparent !important;
@@ -45,7 +93,7 @@
   margin-bottom: 10px !important;
   padding: 8px 12px !important;
   background: linear-gradient(90deg, #98e2c6, #bbf7d0) !important;
-  color: #1f2937 !important;
+  color: #0f172a !important;
   border-radius: 12px !important;
   font-weight: 700 !important;
   letter-spacing: 0.2px !important;
@@ -62,13 +110,14 @@
 /* ACTIVE PAGE LINK */
 .md-nav--primary .md-nav__link--active {
   background-color: rgba(152, 226, 198, 0.20) !important;
-  color: #0f766e !important; /* darker teal for active state */
+  color: #0f766e !important; /* teal */
   font-weight: 700 !important;
 }
 
 /* =======================================================
    RIGHT SIDEBAR (TOC)
    ======================================================= */
+
 .md-nav--secondary {
   padding-top: 12px;
 }
@@ -76,7 +125,7 @@
 /* TOC header pill */
 .md-nav--secondary .md-nav__title {
   background: linear-gradient(90deg, #98e2c6, #bbf7d0) !important;
-  color: #1f2937 !important;
+  color: #0f172a !important;
   border-radius: 10px;
   padding: 10px 12px !important;
   margin-bottom: 10px !important;
@@ -100,6 +149,7 @@
   color: #0f766e !important;
   font-weight: 700 !important;
 }
+
 .md-nav--secondary .md-nav__link--active * {
   color: inherit !important;
 }
