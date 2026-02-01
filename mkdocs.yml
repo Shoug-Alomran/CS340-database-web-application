@@ -72,6 +72,8 @@ nav:
   - Appendix:
       - References: Appendix/references.md
 
+  - Copyright: copyright.md
+
 markdown_extensions:
   - admonition
   - toc:
