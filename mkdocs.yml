@@ -1,5 +1,7 @@
 site_name: CS 340 - Database Web Application
 site_url: https://database.shoug-tech.com
+copyright: © 2026 Shoug Fawaz Alomran · All rights reserved
+
 
 theme:
   name: material
