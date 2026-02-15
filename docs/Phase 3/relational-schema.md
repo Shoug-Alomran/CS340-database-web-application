@@ -9,6 +9,7 @@ Each relation corresponds to an entity or relationship identified in the concept
 ## Relations Overview
 
 ### User
+
 - **user_id** (PK)
 - name
 - email
@@ -18,6 +19,7 @@ Each relation corresponds to an entity or relationship identified in the concept
 ---
 
 ### FamilyMember
+
 - **member_id** (PK)
 - user_id (FK → User.user_id)
 - name
@@ -28,6 +30,7 @@ Each relation corresponds to an entity or relationship identified in the concept
 ---
 
 ### HealthCondition
+
 - **condition_id** (PK)
 - condition_name
 - description
@@ -35,6 +38,7 @@ Each relation corresponds to an entity or relationship identified in the concept
 ---
 
 ### MedicalHistory
+
 - **history_id** (PK)
 - member_id (FK → FamilyMember.member_id)
 - condition_id (FK → HealthCondition.condition_id)
@@ -44,6 +48,7 @@ Each relation corresponds to an entity or relationship identified in the concept
 ---
 
 ### RiskAlert
+
 - **alert_id** (PK)
 - member_id (FK → FamilyMember.member_id)
 - alert_type
@@ -54,6 +59,7 @@ Each relation corresponds to an entity or relationship identified in the concept
 ---
 
 ### Clinic
+
 - **clinic_id** (PK)
 - clinic_name
 - location
@@ -62,6 +68,7 @@ Each relation corresponds to an entity or relationship identified in the concept
 ---
 
 ### Appointment
+
 - **appointment_id** (PK)
 - user_id (FK → User.user_id)
 - clinic_id (FK → Clinic.clinic_id)
@@ -71,6 +78,7 @@ Each relation corresponds to an entity or relationship identified in the concept
 ---
 
 ### AwarenessContent
+
 - **content_id** (PK)
 - title
 - content_type

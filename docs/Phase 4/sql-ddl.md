@@ -28,6 +28,7 @@ Tables are created in dependency order to satisfy foreign key requirements:
 
 ## DDL Scripts (In Progress)
 The final SQL DDL statements will include:
+
 - `CREATE TABLE` definitions for all relations
 - Primary key constraints
 - Foreign key constraints
