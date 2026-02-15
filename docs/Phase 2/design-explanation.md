@@ -10,6 +10,7 @@ The goal of the conceptual design is to accurately model the problem domain whil
 The EER model was developed using a **top-down approach**, starting from the application requirements and identifying the core data objects needed to support system functionality.
 
 The design prioritizes:
+
 - Clear separation of concerns
 - Minimization of data redundancy
 - Logical grouping of related information
@@ -36,6 +37,7 @@ This entity is separated from the User entity to allow tracking of hereditary co
 ### MedicalHistory
 The **MedicalHistory** entity stores historical health data for each family member.  
 Separating medical history into its own entity allows:
+
 - Multiple records per family member
 - Temporal tracking of health conditions
 - Flexible expansion for additional medical attributes
@@ -51,6 +53,7 @@ This avoids repetition of condition names and allows consistent referencing acro
 ### RiskAlert
 The **RiskAlert** entity represents automatically generated alerts based on detected hereditary patterns.  
 It is modeled as a separate entity to support:
+
 - Alert history tracking
 - Status updates (active, resolved)
 - Future analytical extensions
@@ -60,6 +63,7 @@ It is modeled as a separate entity to support:
 ### Appointment and Clinic
 Appointments are modeled independently and linked to clinics to reflect real scheduling workflows.  
 This design allows:
+
 - Multiple appointments per user
 - Centralized clinic information
 - Future support for different clinic types
@@ -68,6 +72,7 @@ This design allows:
 
 ### AwarenessContent
 Awareness and educational materials are stored separately to allow:
+
 - Independent management
 - Easy updates
 - Access without affecting core medical data
@@ -76,6 +81,7 @@ Awareness and educational materials are stored separately to allow:
 
 ## Relationship Considerations
 Relationships were designed with realistic cardinalities:
+
 - One-to-many relationships where ownership or management exists
 - Avoidance of unnecessary many-to-many relationships
 - Clear ownership between users and their managed data
