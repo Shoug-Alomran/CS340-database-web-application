@@ -7,6 +7,7 @@ This section describes the frontend interface of the application and how users i
 
 ## Frontend Goals
 The frontend provides a clear interface for users to:
+
 - Manage family members
 - Record medical history
 - View risk alerts
@@ -16,6 +17,7 @@ The frontend provides a clear interface for users to:
 ---
 
 ## Planned Screens / Pages
+
 - **Home / Dashboard:** Overview of user data and quick access links
 - **Family Members:** List, add, edit, and delete family members
 - **Medical History:** Add/view medical history records per family member
@@ -26,6 +28,7 @@ The frontend provides a clear interface for users to:
 ---
 
 ## Input Validation & UX
+
 - Required fields must be completed before submission
 - User-friendly error messages are shown for invalid input
 - Confirmation prompts for delete actions

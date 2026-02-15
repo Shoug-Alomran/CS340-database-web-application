@@ -7,6 +7,7 @@ This section documents the **integrity constraints** enforced in the database to
 
 ## 1. Entity Integrity (Primary Keys)
 Each table has a primary key to uniquely identify rows:
+
 - `User(user_id)`
 - `FamilyMember(member_id)`
 - `HealthCondition(condition_id)`
@@ -34,17 +35,20 @@ Foreign keys ensure valid relationships between dependent tables:
 To prevent invalid values, the following domain constraints are enforced:
 
 ### Role constraints
+
 - `User.role` must be one of:
   - `citizen`
   - `healthcare_provider`
   - `admin`
 
 ### Gender constraints
+
 - `FamilyMember.gender` must be one of:
   - `male`
   - `female`
 
 ### Status constraints
+
 - `Appointment.status` must be one of:
   - `scheduled`
   - `completed`
@@ -55,12 +59,14 @@ To prevent invalid values, the following domain constraints are enforced:
   - `resolved`
 
 ### Severity constraints
+
 - `MedicalHistory.severity` must be within an acceptable range (e.g., 1–5) or within a known scale.
 
 ---
 
 ## 4. Required Attributes (NOT NULL)
 Critical columns are required to prevent incomplete records:
+
 - `User.email`, `User.name`, `User.role`
 - `FamilyMember.name`, `FamilyMember.relationship_type`, `FamilyMember.user_id`
 - `MedicalHistory.member_id`, `MedicalHistory.condition_id`
