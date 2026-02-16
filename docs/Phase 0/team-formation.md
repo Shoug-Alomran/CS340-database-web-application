@@ -11,7 +11,7 @@
 - **Secondary tools:** GitHub (version control and documentation), Google Docs (collaborative drafting)  
 - **Meeting schedule:** Weekly coordination meetings, with additionl meetings scheduled as needed during major project milestones  
 
-## Roles (Project Plan Dashboard)
+## Project Plan Dashboard
 Detailed responsibilities are maintained in the interactive dashboard:
 
 **Project Plan Dashboard (Roles & Tasks):** [Open the Roles Dashboard](./Project plan.html)

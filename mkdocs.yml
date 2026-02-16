@@ -2,7 +2,6 @@ site_name: CS 340 - Database Web Application
 site_url: https://database.shoug-tech.com
 copyright: © 2026 Shoug Fawaz Alomran · All rights reserved
 
-
 theme:
   name: material
   features:
@@ -12,6 +11,7 @@ theme:
     - search.suggest
     - search.highlight
     - content.code.copy
+    - header.autohide
   palette:
     - scheme: default
       primary: light green
@@ -33,49 +33,39 @@ theme:
 
 nav:
   - Home: index.md
-
   - Project Overview:
       - Introduction: Project Overview/introduction.md
-
   - Phase 0 - Proposal:
       - Team Formation: Phase 0/team-formation.md
       - Project Idea: Phase 0/project-idea.md
-
   - Phase 1 - Planning:
       - Application Concept: Phase 1/application-concept.md
       - Requirements: Phase 1/requirements.md
       - System Architecture: Phase 1/architecture.md
       - UI Wireframes: Phase 1/ui-wireframes.md
       - PDF Report: Phase 1/report.pdf
-
   - Phase 2 - Conceptual Design:
       - EER Diagram: Phase 2/eer-diagram.md
       - Design Explanation: Phase 2/design-explanation.md
       - PDF Report: Phase 2/report.pdf
-
   - Phase 3 - Logical Design:
       - Relational Schema: Phase 3/relational-schema.md
       - Data Dictionary: Phase 3/data-dictionary.md
       - Mapping Explanation: Phase 3/mapping.md
-
   - Phase 4 - Database Implementation:
       - SQL DDL Scripts: Phase 4/sql-ddl.md
       - Sample Data: Phase 4/sample-data.md
       - Constraints & Integrity: Phase 4/constraints.md
-
   - Phase 5 - Application:
       - Backend Logic: Phase 5/backend.md
       - SQL Queries:
           - Basic Queries: Phase 5/basic-queries.md
           - Advanced Queries: Phase 5/advanced-queries.md
       - Frontend Interface: Phase 5/frontend.md
-
   - Sustainability:
       - Reflection: Sustainability/reflection.md
-
   - Appendix:
       - References: Appendix/references.md
-
   - Copyright: Copyright.md
 
 markdown_extensions:
@@ -84,9 +74,12 @@ markdown_extensions:
       permalink: true
   - pymdownx.superfences
   - pymdownx.inlinehilite
+
 plugins:
   - search
 
-
 extra_css:
   - styles/extra.css
+
+extra_javascript:
+  - javascripts/cta-footer.js
