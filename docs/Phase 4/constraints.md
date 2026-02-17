@@ -1,86 +1,74 @@
 # Phase 4 – Database Implementation
 ## Constraints & Integrity
 
-This section documents the **integrity constraints** enforced in the database to maintain consistency, correctness, and reliable relationships between tables.
+This section documents the integrity constraints implemented in the database.
 
 ---
 
-## 1. Entity Integrity (Primary Keys)
-Each table has a primary key to uniquely identify rows:
+## 1) Entity Integrity (Primary Keys)
+
+Each relation has a primary key:
 
 - `User(user_id)`
-- `FamilyMember(member_id)`
-- `HealthCondition(condition_id)`
-- `MedicalHistory(history_id)`
-- `RiskAlert(alert_id)`
 - `Clinic(clinic_id)`
-- `Appointment(appointment_id)`
+- `HealthCondition(condition_id)`
 - `AwarenessContent(content_id)`
+- `FamilyMember(member_id)`
+- `MedicalHistory(event_id)`
+- `RiskAlert(alert_id)`
+- `Appointment(appointment_id)`
+- `HealthEvent(event_id)`
 
 ---
 
-## 2. Referential Integrity (Foreign Keys)
-Foreign keys ensure valid relationships between dependent tables:
+## 2) Referential Integrity (Foreign Keys)
 
+### FamilyMember → User
 - `FamilyMember.user_id` → `User.user_id`
+
+### MedicalHistory → FamilyMember, HealthCondition
 - `MedicalHistory.member_id` → `FamilyMember.member_id`
 - `MedicalHistory.condition_id` → `HealthCondition.condition_id`
+
+### RiskAlert → FamilyMember
 - `RiskAlert.member_id` → `FamilyMember.member_id`
+
+### Appointment → User, Clinic
 - `Appointment.user_id` → `User.user_id`
 - `Appointment.clinic_id` → `Clinic.clinic_id`
 
 ---
 
-## 3. Domain Constraints (CHECK constraints)
-To prevent invalid values, the following domain constraints are enforced:
+## 3) ON DELETE / ON UPDATE Rules (as implemented)
 
-### Role constraints
+- Most foreign keys use:
+  - **ON DELETE RESTRICT**
+  - **ON UPDATE CASCADE**
 
-- `User.role` must be one of:
-  - `citizen`
-  - `healthcare_provider`
-  - `admin`
-
-### Gender constraints
-
-- `FamilyMember.gender` must be one of:
-  - `male`
-  - `female`
-
-### Status constraints
-
-- `Appointment.status` must be one of:
-  - `scheduled`
-  - `completed`
-  - `cancelled`
-
-- `RiskAlert.status` must be one of:
-  - `active`
-  - `resolved`
-
-### Severity constraints
-
-- `MedicalHistory.severity` must be within an acceptable range (e.g., 1–5) or within a known scale.
+Meaning:
+- You cannot delete a parent row if child rows still reference it.
+- If a primary key value changes (rare), children update automatically.
 
 ---
 
-## 4. Required Attributes (NOT NULL)
-Critical columns are required to prevent incomplete records:
+## 4) Domain Constraints (Enums)
 
-- `User.email`, `User.name`, `User.role`
-- `FamilyMember.name`, `FamilyMember.relationship_type`, `FamilyMember.user_id`
-- `MedicalHistory.member_id`, `MedicalHistory.condition_id`
-- `Appointment.user_id`, `Appointment.clinic_id`, `Appointment.appointment_date`
-- `Clinic.clinic_name`
+Controlled attribute domains are enforced using ENUMs, including:
 
----
-
-## 5. Uniqueness Constraints (UNIQUE)
-- `User.email` must be unique (prevents duplicate accounts).
+- `Appointment.status`: Scheduled / Completed / Cancelled
+- `RiskAlert.risk_level`: Low / Medium / High
+- `RiskAlert.status`: New / Viewed / Resolved
+- `MedicalHistory.severity`: Low / Medium / High
+- `FamilyMember.blood_type`: A+, A-, B+, B-, AB+, AB-, O+, O-
+- `FamilyMember.gender`: Male / Female
+- `AwarenessContent.content_type`: Article / Video / Infographic
 
 ---
 
-## 6. Delete/Update Policies
-Foreign key actions are chosen to preserve integrity:
+## 5) CHECK Constraints
 
-- Deleting a `User` should be restricted if dependent records exist **or** handled carefully b
+### HealthEvent.onset_age
+- Constraint ensures:
+  - `onset_age` is either NULL, or between 0 and 120.
+
+This prevents unrealistic ages and keeps event records consistent.

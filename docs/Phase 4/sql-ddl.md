@@ -1,38 +1,51 @@
-
 # Phase 4 – Database Implementation
 ## SQL DDL Scripts
 
-This phase implements the relational schema using SQL DDL statements.  
-The database is created with tables, keys, and constraints to enforce integrity rules defined in Phase 3.
+This phase implements the Phase 3 logical schema using **MySQL** DDL.  
+All tables, keys, and referential constraints are created in a dependency-safe order.
 
 ---
 
 ## DBMS
-**Target DBMS:** TBD (e.g., MySQL / PostgreSQL)
+**Target DBMS:** MySQL (tested with MySQL Workbench / MySQL Server)
 
 ---
 
-## Table Creation Order
-Tables are created in dependency order to satisfy foreign key requirements:
+## Implementation Files
+- **Full DDL script:** `Phase4.sql`
+- This page documents the table order and key constraints at a high level.
+
+---
+
+## Table Creation Order (Dependency Order)
 
 1. `User`
 2. `Clinic`
 3. `HealthCondition`
-4. `FamilyMember` (depends on User)
-5. `MedicalHistory` (depends on FamilyMember, HealthCondition)
-6. `RiskAlert` (depends on FamilyMember)
-7. `Appointment` (depends on User, Clinic)
-8. `AwarenessContent`
+4. `AwarenessContent`
+5. `FamilyMember` (FK → User)
+6. `MedicalHistory` (FK → FamilyMember, HealthCondition)
+7. `RiskAlert` (FK → FamilyMember)
+8. `Appointment` (FK → User, Clinic)
+9. `HealthEvent` (standalone)
 
 ---
 
-## DDL Scripts (In Progress)
-The final SQL DDL statements will include:
+## Key Design Notes
 
-- `CREATE TABLE` definitions for all relations
-- Primary key constraints
-- Foreign key constraints
-- CHECK constraints for domain control
-- NOT NULL and UNIQUE constraints
+### Naming convention
+- Tables use **PascalCase** (e.g., `FamilyMember`)
+- Columns use **snake_case** (e.g., `member_id`)
 
-> The complete SQL script will be added once the relational schema is finalized.
+### Enums used for controlled values
+- `Appointment.status`: Scheduled / Completed / Cancelled
+- `RiskAlert.risk_level`: Low / Medium / High
+- `RiskAlert.status`: New / Viewed / Resolved
+- `MedicalHistory.severity`: Low / Medium / High
+- `FamilyMember.blood_type`: A+, A-, B+, B-, AB+, AB-, O+, O-
+- `AwarenessContent.content_type`: Article / Video / Infographic
+
+### Integrity enforcement
+- Primary keys are `AUTO_INCREMENT` integer identifiers.
+- All relationship integrity is enforced using `FOREIGN KEY` constraints.
+- A CHECK constraint is used in `HealthEvent` to validate `onset_age` when present.

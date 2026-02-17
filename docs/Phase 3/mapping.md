@@ -1,36 +1,16 @@
 # Phase 3 – Logical Design
-## Mapping from EER to Relational Model
+## Mapping from EER Model to Relational Model
 
-This section explains how the conceptual EER design was transformed into a relational schema.
+The logical schema was derived directly from the conceptual EER model developed in Phase 2.
 
----
+### Mapping decisions
 
-## Entity Mapping
-Each strong entity in the EER model was mapped directly to a relation.  
-Primary keys were introduced to uniquely identify each tuple.
+- Each strong entity was mapped to a separate relation.
+- One-to-many (1:N) relationships were implemented using foreign keys on the N-side.
+  - Example: FAMILY_MEMBER includes user_id referencing USER.
+  - Example: MEDICAL_HISTORY includes member_id and condition_id as foreign keys.
+- Independent entities (for example, AWARENESS_CONTENT) were mapped to standalone tables.
+- Primary keys uniquely identify each tuple within its respective relation.
+- Referential integrity is preserved using foreign key constraints.
 
----
-
-## Relationship Mapping
-
-- One-to-many relationships were implemented using **foreign keys** on the many side.
-- No many-to-many relationships were required in the current design.
-- Participation constraints from the EER model were enforced through foreign key dependencies.
-
----
-
-## Attribute Mapping
-
-- Composite attributes were flattened into simple attributes.
-- Multivalued attributes were modeled as separate relations where necessary.
-- Derived attributes were excluded from the relational schema.
-
----
-
-## Integrity Considerations
-Referential integrity is maintained using foreign key constraints, ensuring consistency between related tables.
-
----
-
-## Transition to Implementation
-This logical design provides a structured foundation for SQL implementation in **Phase 4 – Database Implementation**.
+This relational structure preserves the integrity and relationships defined in the conceptual model while preparing the database for implementation in Phase 4.
