@@ -3,6 +3,8 @@
 
 This section summarizes key integrity constraints derived from the relational schema.
 
+---
+
 ### Keys and uniqueness
 
 - USER.user_id is the primary key.
@@ -17,6 +19,8 @@ This section summarizes key integrity constraints derived from the relational sc
   - AWARENESS_CONTENT.content_id
   - HEALTH_EVENT.event_id
 
+---
+
 ### Referential integrity (foreign keys)
 
 - FAMILY_MEMBER.user_id references USER.user_id
@@ -25,6 +29,8 @@ This section summarizes key integrity constraints derived from the relational sc
 - RISK_ALERT.member_id references FAMILY_MEMBER.member_id
 - APPOINTMENT.user_id references USER.user_id
 - APPOINTMENT.clinic_id references CLINIC.clinic_id
+
+---
 
 ### NOT NULL highlights
 

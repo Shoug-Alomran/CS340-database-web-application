@@ -7,8 +7,8 @@ The logical schema was derived directly from the conceptual EER model developed 
 
 - Each strong entity was mapped to a separate relation.
 - One-to-many (1:N) relationships were implemented using foreign keys on the N-side.
-  - Example: FAMILY_MEMBER includes user_id referencing USER.
-  - Example: MEDICAL_HISTORY includes member_id and condition_id as foreign keys.
+     - Example: FAMILY_MEMBER includes user_id referencing USER.
+     - Example: MEDICAL_HISTORY includes member_id and condition_id as foreign keys.
 - Independent entities (for example, AWARENESS_CONTENT) were mapped to standalone tables.
 - Primary keys uniquely identify each tuple within its respective relation.
 - Referential integrity is preserved using foreign key constraints.
