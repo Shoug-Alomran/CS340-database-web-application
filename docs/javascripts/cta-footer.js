@@ -115,6 +115,9 @@
             <div class="footer-col__title">Reports</div>
             <a class="footer-link" href="${url("Phase%201/report.pdf")}">Phase 1 PDF</a>
             <a class="footer-link" href="${url("Phase%202/report.pdf")}">Phase 2 PDF</a>
+            <a class="footer-link" href="${url("Phase%203/report.pdf")}">Phase 3 PDF</a>
+            <a class="footer-link" href="${url("Phase%204/report.pdf")}">Phase 4 PDF</a>
+            <a class="footer-link" href="${url("Phase%205/report.pdf")}">Phase 5 PDF</a>
           </div>
         </div>
       </div>
