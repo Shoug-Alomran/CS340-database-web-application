@@ -6,12 +6,16 @@ theme:
   name: material
   features:
     - navigation.tabs
+    - navigation.tabs.sticky       
     - navigation.sections
-    - navigation.instant
+    - navigation.indexes     
+    - navigation.top
+    - navigation.path
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
-    - header.autohide
+    - toc.follow 
   palette:
     - scheme: default
       primary: light green
@@ -35,46 +39,46 @@ nav:
   - Home: index.md
 
   - Project Overview:
-      - Introduction: Project Overview/introduction.md
+      - Introduction: Project-Overview/introduction.md
 
   - Phase 0 - Proposal:
-      - Team Formation: Phase 0/team-formation.md
-      - Project Idea: Phase 0/project-idea.md
+      - Team Formation: Phase-0/team-formation.md
+      - Project Idea: Phase-0/project-idea.md
 
   - Phase 1 - Planning:
-      - Application Concept: Phase 1/application-concept.md
-      - Requirements: Phase 1/requirements.md
-      - System Architecture: Phase 1/architecture.md
-      - UI Wireframes: Phase 1/ui-wireframes.md
-      - PDF Report: Phase 1/report.pdf
+      - Application Concept: Phase-1/application-concept.md
+      - Requirements: Phase-1/requirements.md
+      - System Architecture: Phase-1/architecture.md
+      - UI Wireframes: Phase-1/ui-wireframes.md
+      - PDF Report: Phase-1/report.pdf
 
   - Phase 2 - Conceptual Design:
-      - EER Diagram: Phase 2/eer-diagram.md
-      - Design Explanation: Phase 2/design-explanation.md
-      - PDF Report: Phase 2/report.pdf
+      - EER Diagram: Phase-2/eer-diagram.md
+      - Design Explanation: Phase-2/design-explanation.md
+      - PDF Report: Phase-2/report.pdf
 
   - Phase 3 - Logical Design:
-      - Relational Schema: Phase 3/relational-schema.md
-      - Data Dictionary: Phase 3/data-dictionary.md
-      - Mapping Explanation: Phase 3/mapping.md
-      - Constraints: Phase 3/constraints.md
-      - Assumptions: Phase 3/assumptions.md
-      - PDF Report: Phase 3/report.pdf
+      - Relational Schema: Phase-3/relational-schema.md
+      - Data Dictionary: Phase-3/data-dictionary.md
+      - Mapping Explanation: Phase-3/mapping.md
+      - Constraints: Phase-3/constraints.md
+      - Assumptions: Phase-3/assumptions.md
+      - PDF Report: Phase-3/report.pdf
 
   - Phase 4 - Database Implementation:
-      - SQL DDL Scripts: Phase 4/sql-ddl.md
-      - SQL File (Download): Phase 4/Phase4.sql
-      - Sample Data: Phase 4/sample-data.md
-      - Constraints & Integrity: Phase 4/constraints.md
-      - PDF Report: Phase 4/report.pdf
+      - SQL DDL Scripts: Phase-4/sql-ddl.md
+      - SQL File (Download): Phase-4/Phase4.sql
+      - Sample Data: Phase-4/sample-data.md
+      - Constraints & Integrity: Phase-4/constraints.md
+      - PDF Report: Phase-4/report.pdf
 
   - Phase 5 - Application:
-      - Backend Logic: Phase 5/backend.md
+      - Backend Logic: Phase-5/backend.md
       - SQL Queries:
-          - Basic Queries: Phase 5/basic-queries.md
-          - Advanced Queries: Phase 5/advanced-queries.md
-      - Frontend Interface: Phase 5/frontend.md
-      - PDF Report: Phase 5/report.pdf
+          - Basic Queries: Phase-5/basic-queries.md
+          - Advanced Queries: Phase-5/advanced-queries.md
+      - Frontend Interface: Phase-5/frontend.md
+      - PDF Report: Phase-5/report.pdf
 
   - Sustainability:
       - Reflection: Sustainability/reflection.md
@@ -86,10 +90,16 @@ nav:
 
 markdown_extensions:
   - admonition
-  - toc:
-      permalink: true
+  - attr_list
+  - md_in_html
+  - pymdownx.details
   - pymdownx.superfences
   - pymdownx.inlinehilite
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true
 
 plugins:
   - search
