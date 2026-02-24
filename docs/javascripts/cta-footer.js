@@ -1,10 +1,11 @@
 (function () {
   const EMAIL = "inquiry@shoug-tech.com";
+  const MAIN_WEBSITE = "https://shoug-tech.com/";
 
   function getBase() {
     try {
       if (typeof __md_get === "function") return __md_get("__base") || "";
-    } catch (e) {}
+    } catch (e) { }
     return "";
   }
 
@@ -111,6 +112,12 @@
             <a class="footer-link" href="mailto:${EMAIL}">${EMAIL}</a>
           </div>
 
+<div class="footer-col">
+  <div class="footer-col__title">Website</div>
+  <a class="footer-link" href="${MAIN_WEBSITE}" target="_blank" rel="noopener">
+    shoug-tech.com
+  </a>
+</div>
           <div class="footer-col">
             <div class="footer-col__title">Reports</div>
             <a class="footer-link" href="${url("Phase%201/report.pdf")}">Phase 1 PDF</a>
