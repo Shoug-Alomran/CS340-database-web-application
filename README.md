@@ -1,5 +1,12 @@
 # CS 340 – Full-Stack Database Web Application
 
+## 🌐 Live Application
+The deployed web application is available at:
+
+🔗 **https://sillah-app.shoug-tech.com**
+
+---
+
 ## Project Overview
 This project is a **full-stack, database-driven web application** developed as part of the  
 **CS 340 – Introduction to Database Systems** course.
@@ -25,11 +32,10 @@ The application includes:
 ---
 
 ## Technologies Used
-*(To be finalized as the project progresses)*
 
 - **Frontend:** HTML, CSS, JavaScript  
-- **Backend:** (e.g., Python / Java / Node.js)  
-- **Database:** (e.g., MySQL / PostgreSQL / SQLite)  
+- **Backend:** Node.js  
+- **Database:** MySQL  
 
 ---
 
@@ -51,6 +57,7 @@ Each phase builds cumulatively on the previous ones.
 - **Shoug Alomran**  
 - **Yara Albugami**  
 - **Rose Al Rakan**
+- **Raghad Abdulaziz**
 
 Each team member contributes to both the **design** and **implementation** aspects of the project, including database modeling, SQL development, and application features.
 
