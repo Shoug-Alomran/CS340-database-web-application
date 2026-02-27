@@ -1,9 +1,9 @@
 # CS 340 – Full-Stack Database Web Application
 
-## 🌐 Live Application
+## Live Application
 The deployed web application is available at:
 
-🔗 **https://sillah-app.shoug-tech.com**
+**https://sillah-app.shoug-tech.com**
 
 ---
 
