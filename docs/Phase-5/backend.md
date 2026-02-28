@@ -1,16 +1,9 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
 # **Phase 5 — Backend Logic**
 
-This phase documents the backend layer responsible for connecting the web application to the relational database.
-
-The backend acts as the intermediary between the frontend interface and the MySQL database implemented in Phase 4.
+This phase documents how the backend connects the frontend to the MySQL schema implemented in Phase 4.
 
 [Basic SQL Queries](../basic-queries/){ .md-button .md-button--primary }
 [Frontend Interface](../frontend/){ .md-button }
@@ -20,149 +13,73 @@ The backend acts as the intermediary between the frontend interface and the MySQ
 
 ---
 
-# 1. Backend Role in the Architecture
+<div class="phase-refresh" markdown>
 
-Within the layered architecture defined in Phase 1:
+## 1. Backend Role
 
-- The **Frontend (Presentation Layer)** collects user input.
-- The **Backend (Business Logic Layer)** processes requests and executes database operations.
-- The **Database (Data Layer)** enforces constraints and stores structured data.
+The backend is the application layer between UI and database:
 
-The backend ensures that all data transactions follow defined business rules and integrity constraints.
-
----
-
-# 2. Backend Responsibilities
-
-The backend layer is responsible for:
-
-- Receiving HTTP requests from the frontend (CRUD operations)
-- Validating user input before database execution
-- Executing SQL queries against the relational database
-- Returning structured responses (JSON or rendered HTML)
-- Handling application errors
-- Enforcing business rules and access control policies
-
-This layer protects the database from invalid or unauthorized operations.
-
----
-
-# 3. Planned Backend Modules
-
-To maintain separation of concerns, the backend is organized into logical modules:
-
-## 3.1 Routing / Controllers
-
-- Handles HTTP endpoints (e.g., `/family-members`, `/appointments`)
-- Maps incoming requests to corresponding service logic
+- Receives HTTP requests
+- Validates inputs
+- Executes parameterized SQL
 - Returns structured responses
+- Enforces business and integrity rules
 
-## 3.2 Database Access Layer
+## 2. Module Structure
 
-- Centralized connection management
-- Parameterized SQL execution
-- Transaction handling
-- Error handling and rollback when necessary
+### 2.1 Routes / Controllers
 
-## 3.3 Validation Module
+- Expose endpoints (users, family members, medical data, alerts, appointments, content)
+- Map request/response handling
 
-- Input validation (required fields, format checks)
-- ENUM/domain verification
-- Protection against SQL injection through parameter binding
+### 2.2 Service / Business Logic
 
-## 3.4 Logging Module
+- Input rule checks
+- Ownership checks (user-scoped data)
+- Workflow decisions (for example alert status transitions)
 
-- Basic request logging
-- Query execution tracing
-- Error recording for debugging
+### 2.3 Data Access Layer
 
----
+- Connection pooling
+- Parameterized query execution
+- Transaction handling for multi-step operations
 
-# 4. Core Endpoint Structure (High-Level)
+### 2.4 Validation and Error Handling
 
-The following endpoints correspond directly to relational operations defined in Phase 3 and Phase 4.
+- Required field validation
+- ENUM/domain validation before query execution
+- Consistent error responses for FK/UNIQUE/CHECK violations
 
----
+## 3. CRUD Coverage by Domain
 
-## 4.1 Users
+- `User`: create profile, read account, update contact data
+- `FamilyMember`: full CRUD (scoped to owner)
+- `MedicalHistory`: full CRUD with required member/condition links
+- `HealthEvent`: event logging with optional member/condition references
+- `RiskAlert`: list/update status (`New`, `Viewed`, `Resolved`)
+- `Clinic`: read catalog data
+- `Appointment`: create/list/update status/cancel
+- `AwarenessContent`: read for users, write/update/delete for admin roles
 
-- Create user
-- Read user profile
-- Update user
-- Delete user  
-  *(Restricted if dependent records exist — enforced by foreign key constraints)*
+## 4. Constraint-Aware Backend Behavior
 
----
+Backend logic is aligned with database constraints:
 
-## 4.2 Family Members
+- Handles `UNIQUE` errors (for example duplicate `User.email`)
+- Prevents invalid ENUM values before SQL execution
+- Surfaces FK dependency issues clearly (`RESTRICT` relationships)
+- Supports cascade-aware deletion flows (`CASCADE` relationships)
+- Validates date/range fields that map to CHECK constraints
 
-- Add family member
-- View all family members for a user
-- Update family member
-- Delete family member
-
-All operations validate ownership and referential integrity.
-
----
-
-## 4.3 Medical History
-
-- Add medical history record for a family member
-- View history for a family member
-- Update medical history record
-- Delete medical history record
-
-Foreign key enforcement ensures that medical history cannot exist without a valid family member.
-
----
-
-## 4.4 Clinics & Appointments
-
-- View clinics
-- Schedule appointment
-- Update appointment status
-- Cancel appointment
-
-Appointment operations validate:
-
-- Existing user
-- Existing clinic
-- ENUM status constraints
-
----
-
-## 4.5 Awareness Content
-
-- View awareness content
-- Admin: create awareness content
-- Admin: update awareness content
-- Admin: delete awareness content
-
-Administrative operations require role-based access control (RBAC).
-
----
-
-# 5. Security Considerations
-
-The backend enforces:
+## 5. Security and Reliability
 
 - Parameterized queries to prevent SQL injection
-- Role-Based Access Control (RBAC)
-- Controlled ENUM domains
-- Foreign key constraints
-- Restricted deletion rules (`ON DELETE RESTRICT`)
+- Input sanitization and schema-level validation
+- Role-based authorization for privileged operations
+- Structured logging for requests, query failures, and constraint violations
 
-All database interactions pass through controlled execution paths.
+## Backend Outcome
 
----
+The backend design provides clean separation of concerns and reliable execution of schema-aware operations for all major application features.
 
-# 6. Implementation Scope
-
-The exact backend framework, deployment environment, and database connection configuration will be finalized after confirming the database schema implementation in Phase 4.
-
-The academic focus of this phase is:
-
-- Correct CRUD mapping to relational schema
-- Constraint-aware query execution
-- Clear separation between layers
-- Maintainable modular backend design
+</div>

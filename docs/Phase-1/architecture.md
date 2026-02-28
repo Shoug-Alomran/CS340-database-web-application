@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -17,6 +12,9 @@ This section defines the high-level architectural structure of the Sillah system
 </div>
 
 ---
+
+<div class="phase-refresh" markdown>
+
 
 ## High-Level Architecture
 
@@ -85,3 +83,5 @@ By adopting the Layered Architecture pattern, the system achieves:
 - Controlled data flow between components  
 
 This architectural foundation supports the implementation phases that follow, particularly relational schema design and backend integration.
+
+</div>

@@ -1,16 +1,9 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
 # **Phase 5 — Frontend Interface**
 
-This section documents the frontend layer of the Sillah application and explains how users interact with database-driven functionality.
-
-The interface serves as the presentation layer within the layered architecture defined in Phase 1.
+This section documents the user-facing interface and how each screen maps to backend/database operations.
 
 [Backend Logic](../backend/){ .md-button .md-button--primary }
 [SQL Queries](../basic-queries/){ .md-button }
@@ -20,134 +13,77 @@ The interface serves as the presentation layer within the layered architecture d
 
 ---
 
-# 1. Frontend Objectives
+<div class="phase-refresh" markdown>
 
-The frontend is designed to provide a structured and intuitive interface that allows users to:
+## 1. Frontend Goals
 
-- Manage family member records  
-- Record and review medical history  
-- View system-generated risk alerts  
-- Schedule and manage clinic appointments  
-- Access preventive awareness content  
+The frontend is designed to be clear, fast, and task-oriented. Core goals:
 
-The design emphasizes usability, clarity, and alignment with database operations.
+- Simple CRUD flows for family and medical data
+- Fast visibility into alerts and appointments
+- Structured presentation of educational content
+- Strong validation feedback before submission
 
----
+## 2. Primary Screens and Data Flows
 
-# 2. Core Application Screens
+### 2.1 Dashboard
 
-## 2.1 Home / Dashboard
+- Shows quick summaries for family members, open alerts, and upcoming appointments
+- Read operations from `FamilyMember`, `RiskAlert`, and `Appointment`
 
-**Purpose:**  
-Provides an overview of user-related data and quick navigation to major features.
+### 2.2 Family Members
 
-**Database Interaction:**  
+- Create/update/delete family member records
+- Uses `FamilyMember` with owner scoping by `user_id`
 
-- `SELECT` queries on FAMILY_MEMBER  
-- `SELECT` queries on RISK_ALERT  
-- `SELECT` queries on APPOINTMENT  
+### 2.3 Medical Records
 
----
+- Historical entries: `MedicalHistory`
+- Event log entries: `HealthEvent`
+- Supports joins to `HealthCondition` for readable condition names
 
-## 2.2 Family Members
+### 2.4 Risk Alerts
 
-**Purpose:**  
-Allows users to create, view, update, and delete family members.
+- Displays `RiskAlert` items by member and status
+- Enables alert lifecycle updates (`New` -> `Viewed` -> `Resolved`)
 
-**Database Interaction:**
+### 2.5 Clinics and Appointments
 
-- `INSERT` into FAMILY_MEMBER  
-- `SELECT` from FAMILY_MEMBER  
-- `UPDATE` FAMILY_MEMBER  
-- `DELETE` from FAMILY_MEMBER  
+- Clinic browsing from `Clinic`
+- Booking/updates in `Appointment`
+- Form controls constrain status to schema ENUM values
 
----
+### 2.6 Awareness Hub
 
-## 2.3 Medical History
+- Content feed from `AwarenessContent`
+- Supports sorting by recency/topic/type
 
-**Purpose:**  
-Allows users to record and review medical events associated with a family member.
+## 3. Validation and UX Rules
 
-**Database Interaction:**
+- Required fields blocked until complete
+- Date/time/email format checks on client side
+- ENUM-constrained values rendered as dropdowns/selectors
+- Friendly inline error messages tied to each field
+- Confirmation prompts for destructive actions
 
-- `INSERT` into MEDICAL_HISTORY  
-- `SELECT` from MEDICAL_HISTORY  
-- Optional joins with HEALTH_CONDITION  
+## 4. Integration Pattern
 
----
+UI interaction flow:
 
-## 2.4 Risk Alerts
+1. User action in screen component
+2. Frontend sends API request to backend endpoint
+3. Backend validates and executes SQL
+4. DB constraints enforce integrity
+5. Response updates UI state
 
-**Purpose:**  
-Displays automatically generated hereditary risk alerts.
+## 5. Accessibility and Responsiveness
 
-**Database Interaction:**
+- Works across desktop and mobile layouts
+- Keyboard-focus visibility on controls
+- High-contrast text and clear navigation labels
 
-- `SELECT` from RISK_ALERT  
-- Aggregation queries based on MEDICAL_HISTORY  
+## Frontend Outcome
 
----
+The interface is aligned with backend endpoints and schema constraints, ensuring that user actions map cleanly to valid database operations.
 
-## 2.5 Clinics & Appointments
-
-**Purpose:**  
-Enables users to browse clinics and schedule or cancel appointments.
-
-**Database Interaction:**
-
-- `SELECT` from CLINIC  
-- `INSERT` into APPOINTMENT  
-- `UPDATE` APPOINTMENT  
-- Foreign key validation (`user_id`, `clinic_id`)  
-
----
-
-## 2.6 Awareness Content
-
-**Purpose:**  
-Provides educational materials and preventive health guidance.
-
-**Database Interaction:**
-
-- `SELECT` from AWARENESS_CONTENT  
-
----
-
-# 3. Input Validation & User Experience
-
-The frontend enforces usability and validation standards:
-
-- Required fields must be completed before submission  
-- Input formats (email, dates, time) are validated  
-- ENUM-based fields are rendered as dropdown selections  
-- Clear, user-friendly error messages are displayed near the relevant input field  
-- Confirmation prompts are required for destructive actions (e.g., delete operations)
-
-These measures improve reliability and reduce invalid database transactions.
-
----
-
-# 4. Integration with Backend Layer
-
-The frontend connects to backend endpoints, which execute SQL operations defined in Phase 4.
-
-The interaction flow follows the layered architecture:
-
-1. User performs action via UI  
-2. Frontend sends request to backend  
-3. Backend executes validated SQL query  
-4. Database enforces constraints  
-5. Response returned to frontend  
-
-This separation ensures maintainability and data integrity.
-
----
-
-# 5. Scope Note
-
-UI wireframes were introduced in Phase 1.  
-
-This phase documents how the visual interface transitions from prototype to functional database-connected implementation.
-
-Styling, animations, and advanced UI enhancements are outside the primary academic scope.  
-The focus remains on correct database interaction and integrity enforcement.
+</div>

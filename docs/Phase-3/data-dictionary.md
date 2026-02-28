@@ -1,16 +1,9 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
 # **Phase 3 — Data Dictionary**
 
-This section defines the attributes, data types, and constraints for each relation in the logical schema.
-
-The data dictionary provides precise structural documentation of the relational design.
+This section defines attributes, data types, and constraints for the logical schema.
 
 [Relational Schema](../relational-schema/){ .md-button .md-button--primary }
 [Constraints Summary](../constraints/){ .md-button }
@@ -20,148 +13,132 @@ The data dictionary provides precise structural documentation of the relational 
 
 ---
 
-# 1. USER
+<div class="phase-refresh" markdown>
 
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `user_id` | INT | Unique user identifier | Primary Key |
-| `first_name` | VARCHAR(50) | User first name | NOT NULL |
-| `last_name` | VARCHAR(50) | User last name | NOT NULL |
-| `email` | VARCHAR(100) | User email address | UNIQUE, NOT NULL |
-| `password_hash` | VARCHAR(255) | Encrypted password | NOT NULL |
-| `phone_number` | VARCHAR(20) | Contact number |  |
-| `created_at` | DATETIME | Account creation timestamp | NOT NULL |
 
----
+## 1. USER
 
-# 2. FAMILY_MEMBER
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `user_id` | INT | PK, AUTO_INCREMENT | Unique user identifier |
+| `first_name` | VARCHAR(50) | Nullable | Given name |
+| `last_name` | VARCHAR(50) | Nullable | Family name |
+| `email` | VARCHAR(100) | UNIQUE | Login/identity email |
+| `password_hash` | VARCHAR(255) | Nullable | Hashed password |
+| `phone_number` | VARCHAR(20) | Nullable | Contact number |
+| `created_at` | DATETIME | DEFAULT CURRENT_TIMESTAMP | Account creation time |
 
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `member_id` | INT | Unique family member identifier | Primary Key |
-| `user_id` | INT | Owner of family member | Foreign Key |
-| `first_name` | VARCHAR(50) | First name | NOT NULL |
-| `last_name` | VARCHAR(50) | Last name | NOT NULL |
-| `date_of_birth` | DATE | Date of birth | NOT NULL |
-| `relationship` | VARCHAR(50) | Relationship to user |  |
-| `contact_phone` | VARCHAR(20) | Contact number |  |
-| `medical_history` | TEXT | General notes |  |
-| `blood_type` | VARCHAR(5) | Blood type |  |
-| `gender` | VARCHAR(10) | Gender |  |
-| `status` | VARCHAR(30) | Overall condition |  |
+## 2. CLINIC
 
----
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `clinic_id` | INT | PK, AUTO_INCREMENT | Unique clinic identifier |
+| `clinic_name` | VARCHAR(120) | NOT NULL | Clinic display name |
+| `city` | VARCHAR(60) | Nullable | City |
+| `address` | VARCHAR(200) | Nullable | Street/address |
+| `phone` | VARCHAR(20) | Nullable | Clinic phone |
 
-# 3. HEALTH_CONDITION
+## 3. HEALTH_CONDITION
 
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `condition_id` | INT | Unique condition identifier | Primary Key |
-| `condition_name` | VARCHAR(100) | Disease/condition name | NOT NULL |
-| `category` | VARCHAR(50) | Condition category |  |
-| `description` | TEXT | Condition description |  |
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `condition_id` | INT | PK, AUTO_INCREMENT | Unique condition identifier |
+| `condition_name` | VARCHAR(120) | NOT NULL, UNIQUE | Canonical condition name |
+| `category` | VARCHAR(60) | Nullable | Condition category |
+| `description` | TEXT | Nullable | Condition description |
 
----
+## 4. AWARENESS_CONTENT
 
-# 4. MEDICAL_HISTORY
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `content_id` | INT | PK, AUTO_INCREMENT | Content identifier |
+| `title` | VARCHAR(150) | NOT NULL | Content title |
+| `topic` | VARCHAR(100) | Nullable | Topic area |
+| `content_type` | ENUM | NOT NULL | `Article`, `Video`, `Infographic` |
+| `content_body` | TEXT | NOT NULL | Main content text |
+| `created_at` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Creation time |
 
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `event_id` | INT | Unique medical history record | Primary Key |
-| `member_id` | INT | Related family member | Foreign Key |
-| `condition_id` | INT | Related condition | Foreign Key |
-| `event_date` | DATE | Date of diagnosis | NOT NULL |
-| `event_type` | VARCHAR(50) | Type of medical event |  |
-| `diagnosis` | TEXT | Diagnosis details |  |
-| `severity` | VARCHAR(20) | Severity level |  |
-| `symptoms` | TEXT | Reported symptoms |  |
-| `treatment` | TEXT | Treatment information |  |
-| `outcome` | TEXT | Treatment outcome |  |
+## 5. FAMILY_MEMBER
 
----
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `member_id` | INT | PK, AUTO_INCREMENT | Family member identifier |
+| `user_id` | INT | NOT NULL, FK -> `USER.user_id` | Owner user |
+| `first_name` | VARCHAR(50) | NOT NULL | First name |
+| `last_name` | VARCHAR(50) | NOT NULL | Last name |
+| `date_of_birth` | DATE | NOT NULL | DOB |
+| `relationship` | VARCHAR(50) | Nullable | Relation to user |
+| `contact_phone` | VARCHAR(20) | Nullable | Contact number |
+| `medical_history` | TEXT | Nullable | Summary notes |
+| `blood_type` | ENUM | Nullable | A+, A-, B+, B-, AB+, AB-, O+, O- |
+| `gender` | ENUM | Nullable | `Male`, `Female` |
+| `status` | VARCHAR(30) | Nullable | Health status tag |
 
-# 5. RISK_ALERT
+## 6. MEDICAL_HISTORY
 
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `alert_id` | INT | Unique alert identifier | Primary Key |
-| `member_id` | INT | Related family member | Foreign Key |
-| `alert_type` | VARCHAR(50) | Type of alert |  |
-| `risk_level` | VARCHAR(20) | Risk level |  |
-| `priority` | VARCHAR(20) | Alert priority |  |
-| `status` | VARCHAR(20) | Alert status |  |
-| `notes` | TEXT | Medical notes |  |
-| `description` | TEXT | Alert explanation |  |
-| `created_date` | DATETIME | Date generated | NOT NULL |
-| `resolved_date` | DATETIME | Date resolved |  |
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `event_id` | INT | PK, AUTO_INCREMENT | Medical history event ID |
+| `member_id` | INT | NOT NULL, FK -> `FAMILY_MEMBER.member_id` | Related member |
+| `condition_id` | INT | NOT NULL, FK -> `HEALTH_CONDITION.condition_id` | Related condition |
+| `event_date` | DATE | NOT NULL | Event date |
+| `event_type` | VARCHAR(50) | Nullable | Event category |
+| `diagnosis` | TEXT | Nullable | Diagnosis details |
+| `severity` | ENUM | Nullable | `Low`, `Medium`, `High` |
+| `symptoms` | TEXT | Nullable | Symptoms text |
+| `treatment` | TEXT | Nullable | Treatment notes |
+| `outcome` | TEXT | Nullable | Outcome notes |
 
----
+## 7. HEALTH_EVENT
 
-# 6. CLINIC
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `event_id` | INT | PK, AUTO_INCREMENT | Event identifier |
+| `member_id` | INT | Nullable, FK -> `FAMILY_MEMBER.member_id` | Optional member link |
+| `condition_id` | INT | Nullable, FK -> `HEALTH_CONDITION.condition_id` | Optional condition link |
+| `event_date` | DATETIME | NOT NULL | Event timestamp |
+| `severity` | ENUM | Nullable | `Low`, `Medium`, `High` |
+| `symptoms` | TEXT | Nullable | Symptoms text |
+| `treatment` | TEXT | Nullable | Treatment |
+| `outcome` | TEXT | Nullable | Outcome |
+| `event_type` | VARCHAR(50) | Nullable | Event category |
+| `diagnosis` | TEXT | Nullable | Diagnosis text |
+| `diagnosis_date` | DATE | Nullable | Date diagnosed |
+| `notes` | TEXT | Nullable | Additional notes |
+| `onset_age` | INT | CHECK (`0 <= onset_age <= 120`) or NULL | Onset age |
+| `status` | VARCHAR(30) | Nullable | Event status |
 
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `clinic_id` | INT | Unique clinic identifier | Primary Key |
-| `clinic_name` | VARCHAR(100) | Clinic name | NOT NULL |
-| `city` | VARCHAR(50) | Clinic city |  |
-| `address` | VARCHAR(150) | Clinic address |  |
-| `phone` | VARCHAR(20) | Contact phone |  |
+## 8. RISK_ALERT
 
----
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `alert_id` | INT | PK, AUTO_INCREMENT | Alert identifier |
+| `member_id` | INT | NOT NULL, FK -> `FAMILY_MEMBER.member_id` | Related member |
+| `alert_type` | VARCHAR(60) | Nullable | Alert classification |
+| `risk_level` | ENUM | NOT NULL | `Low`, `Medium`, `High` |
+| `priority` | VARCHAR(20) | Nullable | Priority label |
+| `status` | ENUM | NOT NULL | `New`, `Viewed`, `Resolved` |
+| `notes` | TEXT | Nullable | Internal notes |
+| `description` | TEXT | Nullable | Alert description |
+| `created_date` | DATETIME | NOT NULL, DEFAULT CURRENT_TIMESTAMP | Alert creation |
+| `resolved_date` | DATETIME | Nullable, CHECK >= `created_date` | Resolution time |
 
-# 7. APPOINTMENT
+## 9. APPOINTMENT
 
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `appointment_id` | INT | Unique appointment ID | Primary Key |
-| `user_id` | INT | Scheduling user | Foreign Key |
-| `clinic_id` | INT | Associated clinic | Foreign Key |
-| `appointment_date` | DATE | Appointment date | NOT NULL |
-| `appointment_time` | TIME | Appointment time | NOT NULL |
-| `reason` | TEXT | Appointment reason |  |
-| `status` | VARCHAR(20) | Appointment status |  |
-
----
-
-# 8. AWARENESS_CONTENT
-
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `content_id` | INT | Unique content ID | Primary Key |
-| `title` | VARCHAR(150) | Content title | NOT NULL |
-| `topic` | VARCHAR(100) | Health topic |  |
-| `content_type` | VARCHAR(30) | Article / Video / Infographic |  |
-| `content_body` | TEXT | Main content |  |
-| `created_at` | DATETIME | Date created | NOT NULL |
-
----
-
-# 9. HEALTH_EVENT
-
-| Attribute | Data Type | Description | Constraints |
-|------------|------------|-------------|-------------|
-| `event_id` | INT | Unique event ID | Primary Key |
-| `event_date` | DATETIME | Event time | NOT NULL |
-| `severity` | VARCHAR(20) | Severity level |  |
-| `symptoms` | TEXT | Event symptoms |  |
-| `condition_name` | VARCHAR(100) | Condition name |  |
-| `treatment` | TEXT | Treatment |  |
-| `outcome` | TEXT | Event result |  |
-| `event_type` | VARCHAR(50) | Event category |  |
-| `diagnosis` | TEXT | Overall findings |  |
-| `diagnosis_date` | DATE | Date of diagnosis |  |
-| `notes` | TEXT | Medical notes |  |
-| `onset_age` | INT | Age during event |  |
-| `status` | VARCHAR(30) | Event status |  |
+| Attribute | Data Type | Constraints | Notes |
+|---|---|---|---|
+| `appointment_id` | INT | PK, AUTO_INCREMENT | Appointment ID |
+| `user_id` | INT | NOT NULL, FK -> `USER.user_id` | Scheduling user |
+| `clinic_id` | INT | NOT NULL, FK -> `CLINIC.clinic_id` | Target clinic |
+| `appointment_date` | DATE | NOT NULL | Appointment date |
+| `appointment_time` | TIME | NOT NULL | Appointment time |
+| `reason` | TEXT | Nullable | Visit reason |
+| `status` | ENUM | NOT NULL | `Scheduled`, `Completed`, `Cancelled` |
 
 ---
 
-# Data Dictionary Outcome
+## Data Dictionary Outcome
 
-The data dictionary formally documents:
+This dictionary provides attribute-level precision for Phase 3 and maps directly to the implemented SQL schema in Phase 4.
 
-- Attribute-level definitions  
-- Data types and constraints  
-- Entity-level structural completeness  
-
-This specification ensures precise alignment between the logical schema and the database implementation in Phase 4.
+</div>

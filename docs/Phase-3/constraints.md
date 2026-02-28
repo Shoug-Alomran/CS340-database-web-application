@@ -1,16 +1,9 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
 # **Phase 3 — Constraints Summary**
 
-This section summarizes the key integrity constraints derived from the relational schema.
-
-These constraints ensure data consistency, enforce ownership relationships, and prevent structural anomalies within the database.
+This section summarizes the logical integrity constraints carried into implementation.
 
 [Relational Schema](../relational-schema/){ .md-button .md-button--primary }
 [Assumptions](../assumptions/){ .md-button }
@@ -20,95 +13,67 @@ These constraints ensure data consistency, enforce ownership relationships, and 
 
 ---
 
-# 1. Keys and Uniqueness
+<div class="phase-refresh" markdown>
 
-Primary keys uniquely identify each tuple within its respective table.
 
-- `USER.user_id` is the primary key.
-- `USER.email` is defined as **UNIQUE**.
+## 1. Keys and Uniqueness
 
-Each table contains a single-attribute primary key:
+Primary keys:
 
-| Table | Primary Key |
-|-------|------------|
-| `FAMILY_MEMBER` | `member_id` |
-| `HEALTH_CONDITION` | `condition_id` |
-| `MEDICAL_HISTORY` | `event_id` |
-| `RISK_ALERT` | `alert_id` |
-| `CLINIC` | `clinic_id` |
-| `APPOINTMENT` | `appointment_id` |
-| `AWARENESS_CONTENT` | `content_id` |
-| `HEALTH_EVENT` | `event_id` |
+- `USER.user_id`
+- `CLINIC.clinic_id`
+- `HEALTH_CONDITION.condition_id`
+- `AWARENESS_CONTENT.content_id`
+- `FAMILY_MEMBER.member_id`
+- `MEDICAL_HISTORY.event_id`
+- `HEALTH_EVENT.event_id`
+- `RISK_ALERT.alert_id`
+- `APPOINTMENT.appointment_id`
 
-These constraints enforce entity integrity across the schema.
+Unique constraints:
 
----
-
-# 2. Referential Integrity (Foreign Keys)
-
-Foreign key constraints preserve valid parent–child relationships and prevent orphan records.
-
-The following references are enforced:
-
-- `FAMILY_MEMBER.user_id` → `USER.user_id`
-- `MEDICAL_HISTORY.member_id` → `FAMILY_MEMBER.member_id`
-- `MEDICAL_HISTORY.condition_id` → `HEALTH_CONDITION.condition_id`
-- `RISK_ALERT.member_id` → `FAMILY_MEMBER.member_id`
-- `APPOINTMENT.user_id` → `USER.user_id`
-- `APPOINTMENT.clinic_id` → `CLINIC.clinic_id`
-
-These constraints ensure:
-
-- Ownership consistency  
-- Valid entity dependencies  
-- Structural correctness of relationships  
+- `USER.email`
+- `HEALTH_CONDITION.condition_name`
 
 ---
 
-# 3. NOT NULL Constraints
+## 2. Referential Integrity
 
-Certain attributes are mandatory to ensure completeness and prevent incomplete records.
+Foreign key references:
 
-### USER
-- `first_name`
-- `last_name`
-- `email`
-- `password_hash`
-- `created_at`
-
-### FAMILY_MEMBER
-- `first_name`
-- `last_name`
-- `date_of_birth`
-
-### HEALTH_CONDITION
-- `condition_name`
-
-### MEDICAL_HISTORY
-- `event_date`
-
-### RISK_ALERT
-- `created_date`
-
-### APPOINTMENT
-- `appointment_date`
-- `appointment_time`
-
-### AWARENESS_CONTENT
-- `title`
-- `created_at`
-
-### HEALTH_EVENT
-- `event_date`
+- `FAMILY_MEMBER.user_id` -> `USER.user_id`
+- `MEDICAL_HISTORY.member_id` -> `FAMILY_MEMBER.member_id`
+- `MEDICAL_HISTORY.condition_id` -> `HEALTH_CONDITION.condition_id`
+- `HEALTH_EVENT.member_id` -> `FAMILY_MEMBER.member_id`
+- `HEALTH_EVENT.condition_id` -> `HEALTH_CONDITION.condition_id`
+- `RISK_ALERT.member_id` -> `FAMILY_MEMBER.member_id`
+- `APPOINTMENT.user_id` -> `USER.user_id`
+- `APPOINTMENT.clinic_id` -> `CLINIC.clinic_id`
 
 ---
 
-# Constraint Outcome
+## 3. Domain Constraints (ENUM)
 
-Together, these constraints enforce:
+- `FAMILY_MEMBER.blood_type` -> `A+`, `A-`, `B+`, `B-`, `AB+`, `AB-`, `O+`, `O-`
+- `FAMILY_MEMBER.gender` -> `Male`, `Female`
+- `MEDICAL_HISTORY.severity` -> `Low`, `Medium`, `High`
+- `HEALTH_EVENT.severity` -> `Low`, `Medium`, `High`
+- `RISK_ALERT.risk_level` -> `Low`, `Medium`, `High`
+- `RISK_ALERT.status` -> `New`, `Viewed`, `Resolved`
+- `APPOINTMENT.status` -> `Scheduled`, `Completed`, `Cancelled`
+- `AWARENESS_CONTENT.content_type` -> `Article`, `Video`, `Infographic`
 
-- **Entity integrity** (primary keys)  
-- **Referential integrity** (foreign keys)  
-- **Attribute-level completeness** (NOT NULL enforcement)  
+---
 
-They provide a structurally consistent and normalized relational schema aligned with the conceptual model defined in Phase 2.
+## 4. Validation Constraints
+
+- `HEALTH_EVENT.onset_age` must be `NULL` or between `0` and `120`.
+- `RISK_ALERT.resolved_date` must be `NULL` or greater than/equal to `created_date`.
+
+---
+
+## Constraint Outcome
+
+These constraints enforce entity integrity, referential integrity, controlled domains, and value-level validation across the Phase 3 logical design.
+
+</div>

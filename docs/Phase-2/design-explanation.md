@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -20,7 +15,10 @@ The objective of the conceptual design is to model the problem domain accurately
 
 ---
 
-# 1. Design Approach
+<div class="phase-refresh" markdown>
+
+
+## 1. Design Approach
 
 The EER model was developed using a **top-down design approach**, beginning with application requirements and identifying the core entities necessary to support system functionality.
 
@@ -36,11 +34,11 @@ The model focuses strictly on **conceptual structure** and excludes implementati
 
 ---
 
-# 2. Entity Design Rationale
+## 2. Entity Design Rationale
 
 ---
 
-## 2.1 User
+### 2.1 User
 
 The **User** entity represents registered system users who interact with the application.
 
@@ -54,7 +52,7 @@ This reflects realistic family health management scenarios.
 
 ---
 
-## 2.2 FamilyMember
+### 2.2 FamilyMember
 
 The **FamilyMember** entity represents individuals associated with a user.
 
@@ -68,7 +66,7 @@ Each family member is owned by exactly one user.
 
 ---
 
-## 2.3 MedicalHistory
+### 2.3 MedicalHistory
 
 The **MedicalHistory** entity stores historical medical records for family members.
 
@@ -82,7 +80,7 @@ This separation ensures normalized storage of health-related data.
 
 ---
 
-## 2.4 HealthCondition
+### 2.4 HealthCondition
 
 The **HealthCondition** entity standardizes disease and condition definitions.
 
@@ -94,7 +92,7 @@ This prevents repetition of condition names across medical records and enables:
 
 ---
 
-## 2.5 RiskAlert
+### 2.5 RiskAlert
 
 The **RiskAlert** entity represents automatically generated alerts based on detected hereditary or medical patterns.
 
@@ -108,7 +106,7 @@ Alerts remain stored after resolution to preserve audit history.
 
 ---
 
-## 2.6 Appointment and Clinic
+### 2.6 Appointment and Clinic
 
 Appointments are modeled independently and linked to clinics to reflect realistic scheduling workflows.
 
@@ -122,7 +120,7 @@ Each appointment must be associated with both a user and a clinic.
 
 ---
 
-## 2.7 AwarenessContent
+### 2.7 AwarenessContent
 
 The **AwarenessContent** entity stores educational materials and preventive information.
 
@@ -134,7 +132,7 @@ It is intentionally independent from medical records to ensure:
 
 ---
 
-# 3. Keys and Attribute Design
+## 3. Keys and Attribute Design
 
 Primary keys uniquely identify each entity:
 
@@ -152,32 +150,32 @@ Some attributes are **derived**, such as `Age` (calculated from `DateOfBirth`), 
 
 ---
 
-# 4. Cardinality and Participation Constraints
+## 4. Cardinality and Participation Constraints
 
 The conceptual model enforces realistic structural constraints:
 
-### User → FamilyMember (1 : N)
+#### User → FamilyMember (1 : N)
 - Each family member must belong to exactly one user  
 - Total participation on FamilyMember  
 
-### FamilyMember → MedicalHistory (1 : N)
+#### FamilyMember → MedicalHistory (1 : N)
 - Each medical history record must belong to exactly one family member  
 - Total participation on MedicalHistory  
 
-### MedicalHistory → HealthCondition (N : 1)
+#### MedicalHistory → HealthCondition (N : 1)
 - Each medical history record references exactly one health condition  
 
-### User → Appointment (1 : N)
+#### User → Appointment (1 : N)
 - Each appointment must be scheduled by exactly one user  
 
-### Appointment → Clinic (N : 1)
+#### Appointment → Clinic (N : 1)
 - Each appointment must occur at exactly one clinic  
 
 These participation constraints prevent orphan records and preserve ownership consistency.
 
 ---
 
-# 5. Design Assumptions
+## 5. Design Assumptions
 
 The conceptual model is based on the following assumptions:
 
@@ -188,7 +186,7 @@ The conceptual model is based on the following assumptions:
 
 ---
 
-# 6. Transition to Logical Design
+## 6. Transition to Logical Design
 
 The conceptual model established in Phase 2 provides the foundation for:
 
@@ -198,3 +196,5 @@ The conceptual model established in Phase 2 provides the foundation for:
 - Enforcing integrity constraints  
 
 These tasks will be completed in **Phase 3 — Logical Design**.
+
+</div>

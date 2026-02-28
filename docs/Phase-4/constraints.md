@@ -1,16 +1,9 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
-# **Phase 4 — Database Implementation: Constraints & Integrity**
+# **Phase 4 — Database Constraints & Integrity**
 
-This section documents the integrity constraints implemented in the physical database schema.
-
-The implementation enforces entity integrity, referential integrity, domain constraints, and validation rules consistent with the logical design defined in Phase 3.
+This section summarizes integrity constraints implemented in the physical MySQL schema.
 
 [SQL DDL Scripts](../sql-ddl/){ .md-button .md-button--primary }
 [Sample Data](../sample-data/){ .md-button }
@@ -20,9 +13,12 @@ The implementation enforces entity integrity, referential integrity, domain cons
 
 ---
 
-# 1. Entity Integrity (Primary Keys)
+<div class="phase-refresh" markdown>
 
-Each relation defines a primary key to uniquely identify tuples:
+
+## 1. Entity Integrity
+
+Primary keys are defined on all relations:
 
 - `User(user_id)`
 - `Clinic(clinic_id)`
@@ -30,122 +26,71 @@ Each relation defines a primary key to uniquely identify tuples:
 - `AwarenessContent(content_id)`
 - `FamilyMember(member_id)`
 - `MedicalHistory(event_id)`
+- `HealthEvent(event_id)`
 - `RiskAlert(alert_id)`
 - `Appointment(appointment_id)`
-- `HealthEvent(event_id)`
 
-Primary keys enforce **entity integrity**, ensuring that each row is uniquely identifiable and non-null.
+Additional uniqueness:
 
----
-
-# 2. Referential Integrity (Foreign Keys)
-
-Foreign key constraints preserve valid parent–child relationships.
+- `User.email` UNIQUE
+- `HealthCondition.condition_name` UNIQUE
 
 ---
 
-## 2.1 FamilyMember → User
+## 2. Referential Integrity
 
-- `FamilyMember.user_id` → `User.user_id`
+### 2.1 FamilyMember -> User
 
-Each family member must be associated with exactly one registered user.
+- `FamilyMember.user_id` -> `User.user_id`
+- `ON DELETE CASCADE`, `ON UPDATE CASCADE`
 
----
+### 2.2 MedicalHistory -> FamilyMember, HealthCondition
 
-## 2.2 MedicalHistory → FamilyMember, HealthCondition
+- `MedicalHistory.member_id` -> `FamilyMember.member_id`
+- `MedicalHistory.condition_id` -> `HealthCondition.condition_id`
+- Member FK cascades on delete; condition FK restricts deletion
 
-- `MedicalHistory.member_id` → `FamilyMember.member_id`
-- `MedicalHistory.condition_id` → `HealthCondition.condition_id`
+### 2.3 HealthEvent -> FamilyMember, HealthCondition
 
-Each medical history record must reference:
-- A valid family member
-- A valid standardized health condition
+- `HealthEvent.member_id` -> `FamilyMember.member_id` (nullable FK)
+- `HealthEvent.condition_id` -> `HealthCondition.condition_id` (nullable FK)
+- Member FK cascades on delete; condition FK restricts deletion
 
----
+### 2.4 RiskAlert -> FamilyMember
 
-## 2.3 RiskAlert → FamilyMember
+- `RiskAlert.member_id` -> `FamilyMember.member_id`
+- `ON DELETE RESTRICT`, `ON UPDATE CASCADE`
 
-- `RiskAlert.member_id` → `FamilyMember.member_id`
+### 2.5 Appointment -> User, Clinic
 
-Alerts cannot exist without a valid family member reference.
-
----
-
-## 2.4 Appointment → User, Clinic
-
-- `Appointment.user_id` → `User.user_id`
-- `Appointment.clinic_id` → `Clinic.clinic_id`
-
-Each appointment must be:
-- Scheduled by a valid user
-- Associated with a valid clinic
+- `Appointment.user_id` -> `User.user_id`
+- `Appointment.clinic_id` -> `Clinic.clinic_id`
+- User FK cascades on delete; clinic FK restricts deletion
 
 ---
 
-# 3. ON DELETE / ON UPDATE Rules
+## 3. Domain Constraints (ENUM)
 
-Most foreign key constraints use:
-
-- **ON DELETE RESTRICT**
-- **ON UPDATE CASCADE**
-
-### Behavior Interpretation
-
-- **ON DELETE RESTRICT**  
-  Prevents deletion of a parent row if dependent child rows exist.
-
-- **ON UPDATE CASCADE**  
-  If a primary key value changes (rare case), dependent foreign key values update automatically.
-
-These rules preserve referential consistency and prevent accidental data loss.
+- `Appointment.status`: `Scheduled`, `Completed`, `Cancelled`
+- `RiskAlert.risk_level`: `Low`, `Medium`, `High`
+- `RiskAlert.status`: `New`, `Viewed`, `Resolved`
+- `MedicalHistory.severity`: `Low`, `Medium`, `High`
+- `HealthEvent.severity`: `Low`, `Medium`, `High`
+- `FamilyMember.blood_type`: `A+`, `A-`, `B+`, `B-`, `AB+`, `AB-`, `O+`, `O-`
+- `FamilyMember.gender`: `Male`, `Female`
+- `AwarenessContent.content_type`: `Article`, `Video`, `Infographic`
 
 ---
 
-# 4. Domain Constraints (ENUM Enforcement)
+## 4. CHECK Constraints
 
-Controlled attribute domains are implemented using `ENUM` constraints.
-
-### Appointment
-- `status`: Scheduled / Completed / Cancelled
-
-### RiskAlert
-- `risk_level`: Low / Medium / High
-- `status`: New / Viewed / Resolved
-
-### MedicalHistory
-- `severity`: Low / Medium / High
-
-### FamilyMember
-- `blood_type`: A+, A-, B+, B-, AB+, AB-, O+, O-
-- `gender`: Male / Female
-
-### AwarenessContent
-- `content_type`: Article / Video / Infographic
-
-ENUM constraints restrict attribute values to predefined valid domains.
+- `chk_he_onset_age`: `onset_age` must be NULL or between 0 and 120.
+- `chk_alert_dates`: `resolved_date` must be NULL or >= `created_date`.
 
 ---
 
-# 5. CHECK Constraints
+## Integrity Outcome
 
-### HealthEvent.onset_age
+The schema enforces entity, referential, domain, and value-level integrity in a way that matches the implemented SQL structure used by the application.
 
-A CHECK constraint enforces:
-
-- `onset_age` is either `NULL`
-- OR between `0` and `120`
-
-This prevents unrealistic age values and ensures logical consistency of event data.
-
----
-
-# Integrity Outcome
-
-The implemented constraints enforce:
-
-- Entity integrity  
-- Referential integrity  
-- Controlled attribute domains  
-- Logical validation rules  
-
-Together, these mechanisms ensure a consistent, reliable, and structurally sound database implementation aligned with the conceptual and logical design phases.
+</div>

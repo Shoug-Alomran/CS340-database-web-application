@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -17,6 +12,9 @@ This section defines the project team structure, communication workflow, and mod
 </div>
 
 ---
+
+<div class="phase-refresh" markdown>
+
 
 ## Team Members
 
@@ -114,3 +112,5 @@ The team follows:
 - Cross-verification of schema, constraints, and documentation  
 
 This structure ensures accountability, technical accuracy, and consistency across all project phases.
+
+</div>

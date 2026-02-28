@@ -1,14 +1,9 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
 # **Phase 3 — Logical Design Assumptions**
 
-This section documents the design assumptions applied during Phase 3 to ensure consistent relational schema mapping, constraint definition, and implementation alignment.
+This section records assumptions used while finalizing Phase 3 logical design.
 
 [Relational Schema](../relational-schema/){ .md-button .md-button--primary }
 [Constraints](../constraints/){ .md-button }
@@ -18,27 +13,30 @@ This section documents the design assumptions applied during Phase 3 to ensure c
 
 ---
 
+<div class="phase-refresh" markdown>
+
+
 ## Assumptions
 
-To complete the logical design consistently, the following assumptions are applied:
+- `USER.email` is the logical unique identifier for user-level identity checks.
+- `FAMILY_MEMBER` is always owned by one `USER` (`user_id` is mandatory).
+- `MEDICAL_HISTORY` records are mandatory links to both a family member and a standardized health condition.
+- `HEALTH_EVENT` supports partially linked records (`member_id` and `condition_id` are optional) to allow flexible event logging workflows.
+- `RISK_ALERT` always belongs to a valid family member and may remain unresolved (`resolved_date` can be `NULL`).
+- `APPOINTMENT` must always reference a valid `USER` and `CLINIC`.
+- `AWARENESS_CONTENT` is independent and intentionally not linked by foreign keys.
+- Enumerated status/risk/severity domains represent controlled business vocabularies.
 
-- Each user account is uniquely identified by `user_id`, and `email` is unique across users.
-- `FAMILY_MEMBER` is owned by exactly one `USER` through `user_id`.
-- Medical history events are recorded per family member and may optionally store detailed text fields (`diagnosis`, `symptoms`, `treatment`, `outcome`).
-- `RISK_ALERT` entries are generated for a specific family member and can be resolved later (`resolved_date` may be `NULL`).
-- `APPOINTMENT` is scheduled by a `USER` and is associated with exactly one `CLINIC`.
-- `AWARENESS_CONTENT` is independent content and does not require foreign keys.
-- `HEALTH_EVENT` is stored as a standalone table as documented in the report schema.
+## Constraint Behavior Assumptions
 
----
+- `ON UPDATE CASCADE` is used to preserve references if key values change.
+- Deletion behavior varies by relationship based on ownership semantics:
+  - Cascading deletes for owner-owned dependent data (for example `USER` -> `FAMILY_MEMBER`).
+  - Restrictive deletes where historical integrity should be protected (for example `HEALTH_CONDITION` referenced by medical records).
+- `CHECK` constraints represent domain validity rules (`onset_age` range and alert date ordering).
 
-## Purpose of These Assumptions
+## Outcome
 
-These assumptions ensure:
+These assumptions ensure that the logical schema remains consistent, implementable, and aligned with the physical MySQL implementation.
 
-- Consistent mapping from the conceptual model into relational tables  
-- Clear ownership and dependency relationships  
-- Predictable constraint enforcement  
-- Alignment between documentation and the implemented schema  
-
-They also establish explicit rules for nullable fields and independent entities prior to implementation.
+</div>

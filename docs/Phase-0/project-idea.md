@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -17,6 +12,9 @@ hide:
 </div>
 
 ---
+
+<div class="phase-refresh" markdown>
+
 
 ## Application Name
 
@@ -142,3 +140,5 @@ Phase 0 establishes the project foundation by defining:
 - Key data categories required for implementation  
 
 These elements provide the basis for Phase 1 planning and subsequent database design phases.
+
+</div>

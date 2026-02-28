@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -20,7 +15,10 @@ The model captures entities, attributes, relationships, and structural constrain
 
 ---
 
-# 1. Purpose of the EER Diagram
+<div class="phase-refresh" markdown>
+
+
+## 1. Purpose of the EER Diagram
 
 The EER diagram is designed to:
 
@@ -34,7 +32,7 @@ This phase focuses strictly on conceptual abstraction.
 
 ---
 
-# 2. Core Entities
+## 2. Core Entities
 
 Based on the application requirements, the following primary entities were identified:
 
@@ -62,7 +60,7 @@ Each entity represents a distinct real-world concept that must be stored and man
 
 ---
 
-# 3. High-Level Relationships
+## 3. High-Level Relationships
 
 The model captures the following primary relationships:
 
@@ -78,8 +76,8 @@ These relationships reflect real-world ownership and dependency rules.
 
 ---
 
-# 4. Relationship Summary  
-### (Cardinality & Participation)
+## 4. Relationship Summary  
+#### (Cardinality & Participation)
 
 | Relationship | Cardinality | Participation | Description |
 |--------------|------------|--------------|-------------|
@@ -95,7 +93,7 @@ Participation constraints prevent orphan records and enforce ownership consisten
 
 ---
 
-# 5. Diagram Modules
+## 5. Diagram Modules
 
 To maintain clarity and modular separation of concerns, the EER model is divided into logical modules:
 
@@ -125,23 +123,23 @@ To maintain clarity and modular separation of concerns, the EER model is divided
 
 ---
 
-# 6. Module Overview
+## 6. Module Overview
 
-### User & Access Control
+#### User & Access Control
 Models user identity, role-based access control (RBAC), and authorization structure.
 
-### Family & Medical History
+#### Family & Medical History
 Models family relationships and longitudinal tracking of medical conditions.
 
-### Risk Alerts & Analysis
+#### Risk Alerts & Analysis
 Models automated alert generation and lifecycle management.
 
-### Appointments, Clinics & Awareness
+#### Appointments, Clinics & Awareness
 Models scheduling workflows, clinic catalog data, and independent educational content.
 
 ---
 
-# Phase 2 Outcome
+## Phase 2 Outcome
 
 The conceptual model established in this phase provides:
 
@@ -150,3 +148,5 @@ The conceptual model established in this phase provides:
 - Modular organization of system domains  
 
 This structure serves as the normalized foundation for relational schema mapping in **Phase 3 — Logical Design**.
+
+</div>

@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -17,7 +12,7 @@ Sustainability is considered from technical, social, and architectural perspecti
 
 ---
 
-# 1. Technical Sustainability
+## 1. Technical Sustainability
 
 From a technical standpoint, sustainability is achieved through structured relational database design.
 
@@ -39,7 +34,7 @@ By prioritizing correctness and structural clarity, the system reduces long-term
 
 ---
 
-# 2. Social Sustainability
+## 2. Social Sustainability
 
 From a social perspective, the system promotes preventive healthcare awareness.
 
@@ -54,7 +49,7 @@ By improving access to organized health data, the system supports responsible an
 
 ---
 
-# 3. Architectural Sustainability
+## 3. Architectural Sustainability
 
 The modular, phase-based system design supports long-term adaptability.
 
@@ -74,7 +69,7 @@ Future developers can enhance specific components without redesigning the entire
 
 ---
 
-# 4. Documentation Sustainability
+## 4. Documentation Sustainability
 
 Structured documentation across all phases ensures:
 
@@ -86,7 +81,7 @@ Comprehensive documentation supports long-term maintainability and academic tran
 
 ---
 
-# Conclusion
+## Conclusion
 
 Sustainability in this project is achieved through:
 

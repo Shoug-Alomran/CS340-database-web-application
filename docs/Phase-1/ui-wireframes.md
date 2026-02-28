@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -20,7 +15,10 @@ Each interface component is mapped directly to database operations to ensure ali
 
 ---
 
-# 1. Design Principles
+<div class="phase-refresh" markdown>
+
+
+## 1. Design Principles
 
 The prototype follows structured design principles to ensure database-driven consistency:
 
@@ -50,13 +48,13 @@ The prototype follows structured design principles to ensure database-driven con
 
 ---
 
-# 2. Main Screens Overview
+## 2. Main Screens Overview
 
 Each screen corresponds to defined database interactions.
 
 ---
 
-## 2.1 Login / Registration Screen
+### 2.1 Login / Registration Screen
 
 **Purpose:**  
 Authenticate users and assign roles.
@@ -68,7 +66,7 @@ Authenticate users and assign roles.
 
 ---
 
-## 2.2 User Dashboard (Citizen)
+### 2.2 User Dashboard (Citizen)
 
 **Purpose:**  
 Provide an overview of family health data and active alerts.
@@ -81,7 +79,7 @@ Provide an overview of family health data and active alerts.
 
 ---
 
-## 2.3 Add / Edit Family Member Screen
+### 2.3 Add / Edit Family Member Screen
 
 **Purpose:**  
 Record family members and manage associated health information.
@@ -94,7 +92,7 @@ Record family members and manage associated health information.
 
 ---
 
-## 2.4 Risk Alerts Screen
+### 2.4 Risk Alerts Screen
 
 **Purpose:**  
 Display generated hereditary risk alerts and explanations.
@@ -106,7 +104,7 @@ Display generated hereditary risk alerts and explanations.
 
 ---
 
-## 2.5 Clinic Booking Screen
+### 2.5 Clinic Booking Screen
 
 **Purpose:**  
 Schedule preventive screening appointments.
@@ -119,7 +117,7 @@ Schedule preventive screening appointments.
 
 ---
 
-## 2.6 Awareness Hub Screen
+### 2.6 Awareness Hub Screen
 
 **Purpose:**  
 Provide educational content and preventive checklists.
@@ -131,7 +129,7 @@ Provide educational content and preventive checklists.
 
 ---
 
-# 3. Admin Interface (High-Level)
+## 3. Admin Interface (High-Level)
 
 **Purpose:**  
 Enable administrative management of system data.
@@ -145,7 +143,7 @@ The admin interface operates with elevated permissions and is restricted to auth
 
 ---
 
-# 4. Scope and Limitations
+## 4. Scope and Limitations
 
 This prototype represents:
 
@@ -163,7 +161,7 @@ The prototype exists solely to validate interaction logic prior to implementatio
 
 ---
 
-# Phase 1 Outcome
+## Phase 1 Outcome
 
 By defining UI wireframes aligned with database operations, this phase ensures:
 
@@ -172,3 +170,5 @@ By defining UI wireframes aligned with database operations, this phase ensures:
 - Structured role-based interaction flow  
 
 These elements support smooth transition into conceptual modeling and database implementation phases.
+
+</div>

@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -20,7 +15,10 @@ The requirements establish measurable expectations for system behavior, data man
 
 ---
 
-# 1. Data Requirements
+<div class="phase-refresh" markdown>
+
+
+## 1. Data Requirements
 
 The system must manage structured data across the following domains:
 
@@ -37,7 +35,7 @@ The system must manage structured data across the following domains:
 
 ---
 
-# 2. Functional Requirements
+## 2. Functional Requirements
 
 The system shall implement the following core functionalities:
 
@@ -54,13 +52,13 @@ Functional requirements define the observable system behaviors accessible to use
 
 ---
 
-# 3. Non-Functional Requirements
+## 3. Non-Functional Requirements
 
 Non-functional requirements define system quality attributes and operational constraints.
 
 ---
 
-## 3.1 Usability Requirements
+### 3.1 Usability Requirements
 
 | ID | Title | Requirement |
 |----|--------|-------------|
@@ -70,7 +68,7 @@ Non-functional requirements define system quality attributes and operational con
 
 ---
 
-## 3.2 Reliability Requirements
+### 3.2 Reliability Requirements
 
 | ID | Title | Requirement |
 |----|--------|-------------|
@@ -80,7 +78,7 @@ Non-functional requirements define system quality attributes and operational con
 
 ---
 
-## 3.3 Security Requirements
+### 3.3 Security Requirements
 
 | ID | Title | Requirement |
 |----|--------|-------------|
@@ -90,7 +88,7 @@ Non-functional requirements define system quality attributes and operational con
 
 ---
 
-# Requirements Outcome
+## Requirements Outcome
 
 This requirements specification defines:
 
@@ -99,3 +97,5 @@ This requirements specification defines:
 - Quality attributes and operational constraints  
 
 These requirements serve as the foundation for conceptual modeling (Phase 2), logical schema design (Phase 3), and implementation (Phase 4–5).
+
+</div>

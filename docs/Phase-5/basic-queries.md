@@ -1,16 +1,9 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
-# **Phase 5 — Basic SQL Queries**
+# **Phase 5 — Basic SQL Queries (q01–q20)**
 
-This section documents the core SQL queries used by the web application to support standard data retrieval operations.
-
-These queries represent essential `SELECT` statements executed by backend endpoints to retrieve structured information from the relational database.
+This section documents the basic query set used in the application backend.
 
 [Advanced Queries](../advanced-queries/){ .md-button .md-button--primary }
 [Frontend Interface](../frontend/){ .md-button }
@@ -20,111 +13,183 @@ These queries represent essential `SELECT` statements executed by backend endpoi
 
 ---
 
-# 1. Retrieve All Family Members for a User
+<div class="phase-refresh" markdown>
 
-This query retrieves all family members associated with a specific user.
+## Query Catalog
+
+### q01 — Count users
 
 ```sql
-SELECT member_id,
-       full_name,
-       relationship_type,
-       gender,
-       date_of_birth
+SELECT COUNT(*) AS total_users FROM User;
+```
+
+### q02 — List latest users
+
+```sql
+SELECT user_id, first_name, last_name, email, phone_number, created_at
+FROM User
+ORDER BY created_at DESC
+LIMIT 10;
+```
+
+### q03 — Search users by email
+
+```sql
+SELECT user_id, first_name, last_name, email
+FROM User
+WHERE email LIKE CONCAT('%', ?, '%')
+ORDER BY user_id DESC;
+```
+
+### q04 — Count family members
+
+```sql
+SELECT COUNT(*) AS total_family_members FROM FamilyMember;
+```
+
+### q05 — List family members (simple)
+
+```sql
+SELECT member_id, user_id, first_name, last_name, relationship, date_of_birth
 FROM FamilyMember
-WHERE user_id = ?;
+ORDER BY member_id DESC
+LIMIT 15;
 ```
 
-**Purpose:**
-Used in the Family Members screen to display a user’s managed relatives.
-
-**Parameter:**
-`?` → user_id (provided by the authenticated session)
-
----
-
-# 2. Retrieve Medical History for a Family Member
-
-This query retrieves medical history records for a selected family member, including associated health condition information.
+### q06 — Family members for a given user
 
 ```sql
-SELECT hc.condition_name,
-       mh.diagnosis_date,
-       mh.severity_level
-FROM MedicalHistory mh
-JOIN HealthCondition hc
-  ON mh.condition_id = hc.condition_id
-WHERE mh.member_id = ?;
+SELECT member_id, first_name, last_name, relationship
+FROM FamilyMember
+WHERE user_id = ?
+ORDER BY member_id DESC;
 ```
 
-**Purpose:**
-Used in the Medical History screen to present condition details and severity levels.
-
-**Parameter:**
-`?` → member_id
-
----
-
-# 3. Retrieve All Clinics
-
-This query retrieves all clinics available in the system.
+### q07 — Count health events
 
 ```sql
-SELECT clinic_id,
-       clinic_name,
-       location,
-       phone
-FROM Clinic;
+SELECT COUNT(*) AS total_health_events FROM HealthEvent;
 ```
 
-**Purpose:**
-Used in the clinic browsing and appointment scheduling interface.
-
----
-
-# 4. Retrieve Appointments for a User
-
-This query retrieves all appointments scheduled by a specific user, including clinic information.
+### q08 — List events
 
 ```sql
-SELECT a.appointment_id,
-       c.clinic_name,
-       a.appointment_datetime,
-       a.status
-FROM Appointment a
-JOIN Clinic c
-  ON a.clinic_id = c.clinic_id
-WHERE a.user_id = ?;
+SELECT event_id, member_id, condition_id, severity, event_date
+FROM HealthEvent
+ORDER BY event_date DESC
+LIMIT 15;
 ```
 
-**Purpose:**
-Used in the Appointments screen to display scheduled visits.
-
-**Parameter:**
-`?` → user_id
-
----
-
-# 5. Retrieve Awareness Content
-
-This query retrieves all available health awareness content.
+### q09 — Events by severity
 
 ```sql
-SELECT title,
-       category,
-       publish_date
-FROM AwarenessContent;
+SELECT event_id, member_id, condition_id, severity, event_date
+FROM HealthEvent
+WHERE severity = ?
+ORDER BY event_date DESC;
 ```
 
-**Purpose:**
-Used in the Awareness Hub to display educational materials.
+### q10 — List conditions
 
----
+```sql
+SELECT condition_id, condition_name
+FROM HealthCondition
+ORDER BY condition_name;
+```
 
-# Query Design Notes
+### q11 — List medical history
 
-* Parameter placeholders (`?`) are used to prevent SQL injection.
-* All queries follow relational integrity defined in Phase 4.
-* JOIN operations are used only where necessary to preserve normalization.
-* Queries are optimized for clarity and readability rather than advanced performance tuning.
+```sql
+SELECT event_id, member_id, condition_id, diagnosis_date
+FROM MedicalHistory
+ORDER BY diagnosis_date DESC
+LIMIT 15;
+```
 
-These basic queries form the foundation of the application’s read operations and support standard user interactions across the system.
+### q12 — History for one member
+
+```sql
+SELECT event_id, member_id, condition_id, diagnosis_date, notes
+FROM MedicalHistory
+WHERE member_id = ?
+ORDER BY diagnosis_date DESC;
+```
+
+### q13 — List risk alerts
+
+```sql
+SELECT alert_id, member_id, risk_level, status, created_date
+FROM RiskAlert
+ORDER BY created_date DESC
+LIMIT 15;
+```
+
+### q14 — Alerts for member
+
+```sql
+SELECT alert_id, member_id, risk_level, status, created_date
+FROM RiskAlert
+WHERE member_id = ?
+ORDER BY created_date DESC;
+```
+
+### q15 — Count alerts by status
+
+```sql
+SELECT status, COUNT(*) AS total
+FROM RiskAlert
+GROUP BY status
+ORDER BY total DESC;
+```
+
+### q16 — List events for a member
+
+```sql
+SELECT event_id, condition_id, severity, event_date
+FROM HealthEvent
+WHERE member_id = ?
+ORDER BY event_date DESC;
+```
+
+### q17 — List High severity events
+
+```sql
+SELECT event_id, member_id, condition_id, event_date
+FROM HealthEvent
+WHERE severity = 'High'
+ORDER BY event_date DESC;
+```
+
+### q18 — List High risk alerts
+
+```sql
+SELECT alert_id, member_id, status, created_date
+FROM RiskAlert
+WHERE risk_level = 'High'
+ORDER BY created_date DESC;
+```
+
+### q19 — List users alphabetically
+
+```sql
+SELECT user_id, first_name, last_name, email
+FROM User
+ORDER BY last_name, first_name
+LIMIT 20;
+```
+
+### q20 — List family members alphabetically
+
+```sql
+SELECT member_id, first_name, last_name, relationship
+FROM FamilyMember
+ORDER BY last_name, first_name
+LIMIT 20;
+```
+
+## Notes
+
+- `?` indicates a parameterized value.
+- Query IDs map directly to backend query constants for implementation traceability.
+
+</div>

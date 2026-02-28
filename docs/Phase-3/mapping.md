@@ -1,14 +1,9 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
-# **Phase 3 — Mapping from EER Model to Relational Model**
+# **Phase 3 — Mapping from EER to Relational Model**
 
-This section explains how the conceptual EER model developed in Phase 2 was systematically transformed into a relational schema suitable for implementation.
+This section explains how the conceptual EER model from Phase 2 was transformed into the relational schema.
 
 [EER Diagram](../../Phase-2/eer-diagram/){ .md-button .md-button--primary }
 [Data Dictionary](../data-dictionary/){ .md-button }
@@ -18,99 +13,71 @@ This section explains how the conceptual EER model developed in Phase 2 was syst
 
 ---
 
-# 1. Mapping Strategy
+<div class="phase-refresh" markdown>
 
-The logical schema was derived directly from the conceptual EER model.
 
-The mapping process followed standard transformation rules from EER to relational design:
+## 1. Mapping Strategy
 
-- Each strong entity was mapped to a separate relation.
-- One-to-many (1:N) relationships were implemented using foreign keys placed on the N-side.
-- Independent entities were mapped to standalone relations.
-- Primary keys uniquely identify each tuple within its respective relation.
-- Referential integrity is preserved using foreign key constraints.
+The mapping process followed standard EER-to-relational rules:
 
-This approach ensures structural consistency between conceptual and logical representations.
+- Each strong entity became a base relation.
+- 1:N relationships were mapped with foreign keys on the N-side.
+- Domain restrictions were captured with ENUM columns.
+- Integrity and validity rules were captured with PK/FK/CHECK constraints.
 
 ---
 
-# 2. Entity-to-Relation Mapping
+## 2. Entity-to-Relation Mapping
 
-### Strong Entities → Relations
+The following entities were mapped to relations:
 
-Each strong entity in the EER model was converted into a corresponding table:
-
-- `USER`
-- `FAMILY_MEMBER`
-- `HEALTH_CONDITION`
-- `MEDICAL_HISTORY`
-- `RISK_ALERT`
-- `CLINIC`
-- `APPOINTMENT`
-- `AWARENESS_CONTENT`
-- `HEALTH_EVENT`
-
-Each relation contains:
-
-- A primary key  
-- Attribute set derived from the entity  
-- Foreign keys where required  
+- `User` -> `USER`
+- `Clinic` -> `CLINIC`
+- `HealthCondition` -> `HEALTH_CONDITION`
+- `AwarenessContent` -> `AWARENESS_CONTENT`
+- `FamilyMember` -> `FAMILY_MEMBER`
+- `MedicalHistory` -> `MEDICAL_HISTORY`
+- `HealthEvent` -> `HEALTH_EVENT`
+- `RiskAlert` -> `RISK_ALERT`
+- `Appointment` -> `APPOINTMENT`
 
 ---
 
-# 3. Relationship Mapping
+## 3. Relationship Mapping
 
-### 1 : N Relationships
+### 3.1 Core 1:N Relationships
 
-One-to-many relationships were implemented by placing a foreign key in the relation on the N-side.
+- `FAMILY_MEMBER.user_id` -> `USER.user_id`
+- `MEDICAL_HISTORY.member_id` -> `FAMILY_MEMBER.member_id`
+- `MEDICAL_HISTORY.condition_id` -> `HEALTH_CONDITION.condition_id`
+- `RISK_ALERT.member_id` -> `FAMILY_MEMBER.member_id`
+- `APPOINTMENT.user_id` -> `USER.user_id`
+- `APPOINTMENT.clinic_id` -> `CLINIC.clinic_id`
 
-Examples:
+### 3.2 Extended Event Mapping
 
-- `FAMILY_MEMBER.user_id` → references `USER.user_id`
-- `MEDICAL_HISTORY.member_id` → references `FAMILY_MEMBER.member_id`
-- `MEDICAL_HISTORY.condition_id` → references `HEALTH_CONDITION.condition_id`
-- `APPOINTMENT.user_id` → references `USER.user_id`
-- `APPOINTMENT.clinic_id` → references `CLINIC.clinic_id`
+`HEALTH_EVENT` supports optional linkage to both family members and conditions:
 
-This ensures:
+- `HEALTH_EVENT.member_id` -> `FAMILY_MEMBER.member_id` (nullable)
+- `HEALTH_EVENT.condition_id` -> `HEALTH_CONDITION.condition_id` (nullable)
 
-- Ownership consistency  
-- Referential integrity  
-- Prevention of orphan records  
-
----
-
-# 4. Independent Entities
-
-Entities without mandatory dependency relationships were mapped as standalone tables.
-
-Example:
-
-- `AWARENESS_CONTENT`
-
-This allows modular content management without foreign key dependency.
+This supports both linked and partially specified event records.
 
 ---
 
-# 5. Integrity Preservation
+## 4. Constraint Mapping
 
-The relational schema preserves the constraints defined in the conceptual model by enforcing:
+Relational constraints preserve conceptual rules:
 
-- Primary key constraints (entity integrity)  
-- Foreign key constraints (referential integrity)  
-- NOT NULL constraints (participation enforcement)  
-
-This ensures that the relational design faithfully represents the conceptual EER structure.
+- Entity integrity: primary keys on all relations
+- Referential integrity: foreign keys across dependent relations
+- Domain integrity: ENUM constraints for controlled statuses/categories
+- Validation integrity: CHECK constraints for business rules
 
 ---
 
-# 6. Preparation for Implementation
+## 5. Implementation Readiness
 
-The resulting relational structure:
+The resulting relational schema is normalized, dependency-safe, and ready for MySQL DDL implementation in Phase 4.
 
-- Maintains conceptual relationships  
-- Eliminates redundancy  
-- Supports normalization  
-- Is ready for SQL implementation in Phase 4  
-
-The mapping process provides a direct and traceable transition from conceptual modeling to database implementation.
+</div>

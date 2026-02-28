@@ -1,8 +1,3 @@
----
-hide:
-  - toc
----
-
 <div class="home-hero" markdown>
 <div class="home-hero__text" markdown>
 
@@ -17,6 +12,9 @@ This phase defines the system purpose, scope, and intended user interaction mode
 </div>
 
 ---
+
+<div class="phase-refresh" markdown>
+
 
 ## Application Purpose and Scope
 
@@ -111,3 +109,5 @@ By the end of Phase 1, the system concept establishes:
 - Explicit scope limitations  
 
 These foundations guide subsequent phases involving data modeling, relational schema design, normalization, and implementation.
+
+</div>
