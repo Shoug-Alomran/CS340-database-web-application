@@ -1,6 +1,7 @@
 (function () {
   const EMAIL = "inquiry@shoug-tech.com";
   const MAIN_WEBSITE = "https://shoug-tech.com/";
+  const BLUEPRINT_WEBSITE = "https://blueprint.shoug-tech.com/";
 
   function getBase() {
     try {
@@ -178,10 +179,22 @@
     else footer.prepend(block);
   }
 
+  function updateFooterAttribution() {
+    const attributionLink = document.querySelector(
+      '.md-footer-meta a[href*="squidfunk.github.io/mkdocs-material"]'
+    );
+    if (!attributionLink) return;
+    attributionLink.href = BLUEPRINT_WEBSITE;
+    attributionLink.textContent = "Made by Blueprint";
+    attributionLink.setAttribute("target", "_blank");
+    attributionLink.setAttribute("rel", "noopener");
+  }
+
   function run() {
     document.body.classList.remove("sidebar-nav-collapsed", "sidebar-toc-collapsed");
     addHeaderCTA();
     addFooterBlock();
+    updateFooterAttribution();
     styleFooterMetaToMatch();
   }
 
