@@ -8,8 +8,8 @@ This project is a full-stack, database-driven web application developed for
 
 The project demonstrates the complete lifecycle of relational database development — from requirements analysis and data modeling to SQL implementation and web-based CRUD operations.
 
-[Project Phases](../Phase-1/){ .md-button .md-button--primary }
-[Database Schema](../Phase-2/){ .md-button }
+[Phase 1 Overview](../../Phase-1/application-concept/){ .md-button .md-button--primary }
+[Database Schema](../../Phase-2/eer-diagram/){ .md-button }
 
 </div>
 </div>
@@ -79,28 +79,28 @@ All development follows structured academic guidelines to ensure clarity, reprod
     ---
     Define system scope, identify stakeholders, develop usage scenarios, and design the system architecture and UI prototype.
 
-    [Phase I Overview](./Phase-1/)
+    [Phase I Overview](../../Phase-1/application-concept/)
 
 -   :material-numeric-2-circle: **Phase II — Data Modeling**
 
     ---
     Develop EER diagrams, relational schemas, normalization, and enforce structural integrity constraints.
 
-    [Phase II Overview](../Phase-2/)
+    [Phase II Overview](../../Phase-2/eer-diagram/)
 
 -   :material-numeric-3-circle: **Phase III — Implementation**
 
     ---
     Implement the database using SQL, integrate with backend logic, and validate data operations.
 
-    [Phase III Overview](../Phase-3/)
+    [Phase III Overview](../../Phase-3/relational-schema/)
 
 -   :material-numeric-4-circle: **Phase IV — Testing & Finalization**
 
     ---
     Perform validation, query testing, system verification, and final documentation review.
 
-    [Phase IV Overview](../Phase-4/)
+    [Phase IV Overview](../../Phase-4/sql-ddl/)
 
 </div>
 

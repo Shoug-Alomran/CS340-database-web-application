@@ -7,6 +7,8 @@ This phase implements the Phase 3 logical schema in MySQL using production-ready
 
 [Sample Data](../sample-data/){ .md-button .md-button--primary }
 [Constraints & Integrity](../constraints/){ .md-button }
+[Download SQL File](/Phase-4/Phase4.sql){ .md-button }
+[Download Phase 4 Report](/Phase-4/report.pdf){ .md-button }
 
 </div>
 </div>

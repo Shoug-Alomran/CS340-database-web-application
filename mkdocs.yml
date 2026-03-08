@@ -1,9 +1,13 @@
 site_name: CS 340 - Database Web Application
 site_url: https://database.shoug-tech.com
+site_description: Academic documentation for the CS340 database web application project, covering planning, data modeling, implementation, and backend integration.
 copyright: © 2026 Shoug Fawaz Alomran · All rights reserved
+use_directory_urls: true
+strict: true
 
 theme:
   name: material
+  custom_dir: overrides
   logo: logo.png
   favicon: google.png
 
@@ -15,8 +19,6 @@ theme:
     - navigation.top
     - navigation.path
     - search.suggest
-    - search.highlight
-    - search.share
     - content.code.copy
     - toc.follow 
   palette:
@@ -53,12 +55,10 @@ nav:
       - Requirements: Phase-1/requirements.md
       - System Architecture: Phase-1/architecture.md
       - UI Wireframes: Phase-1/ui-wireframes.md
-      - PDF Report: Phase-1/report.pdf
 
   - Phase 2 - Conceptual Design:
       - EER Diagram: Phase-2/eer-diagram.md
       - Design Explanation: Phase-2/design-explanation.md
-      - PDF Report: Phase-2/report.pdf
 
   - Phase 3 - Logical Design:
       - Relational Schema: Phase-3/relational-schema.md
@@ -66,14 +66,11 @@ nav:
       - Mapping Explanation: Phase-3/mapping.md
       - Constraints: Phase-3/constraints.md
       - Assumptions: Phase-3/assumptions.md
-      - PDF Report: Phase-3/report.pdf
 
   - Phase 4 - Database Implementation:
       - SQL DDL Scripts: Phase-4/sql-ddl.md
-      - SQL File (Download): Phase-4/Phase4.sql
       - Sample Data: Phase-4/sample-data.md
       - Constraints & Integrity: Phase-4/constraints.md
-      - PDF Report: Phase-4/report.pdf
 
   - Phase 5 - Application:
       - Backend Logic: Phase-5/backend.md
@@ -81,15 +78,12 @@ nav:
           - Basic Queries: Phase-5/basic-queries.md
           - Advanced Queries: Phase-5/advanced-queries.md
       - Frontend Interface: Phase-5/frontend.md
-      - PDF Report: Phase-5/report.pdf
 
   - Sustainability:
       - Reflection: Sustainability/reflection.md
 
   - Appendix:
       - References: Appendix/references.md
-
-  - Copyright: Copyright.md
 
 markdown_extensions:
   - admonition
@@ -107,8 +101,12 @@ markdown_extensions:
 plugins:
   - search
 
+hooks:
+  - hooks/seo.py
+
 extra_css:
   - styles/extra.css
 
 extra_javascript:
   - javascripts/cta-footer.js
+  - javascripts/seo-cleanup.js

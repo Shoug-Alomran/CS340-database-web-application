@@ -7,6 +7,7 @@ This phase documents how the backend connects the frontend to the MySQL schema i
 
 [Basic SQL Queries](../basic-queries/){ .md-button .md-button--primary }
 [Frontend Interface](../frontend/){ .md-button }
+[Download Phase 5 Report](/Phase-5/report.pdf){ .md-button }
 
 </div>
 </div>

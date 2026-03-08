@@ -157,10 +157,10 @@
 
           <div class="footer-col footer-col--panel">
             <div class="footer-col__title">Reports</div>
-            <a class="footer-link" href="${url("Phase-1/report.pdf")}">Phase 1 PDF</a>
-            <a class="footer-link" href="${url("Phase-2/report.pdf")}">Phase 2 PDF</a>
-            <a class="footer-link" href="${url("Phase-3/report.pdf")}">Phase 3 PDF</a>
-            <a class="footer-link" href="${url("Phase-4/report.pdf")}">Phase 4 PDF</a>
+            <a class="footer-link" href="${url("Phase-1/application-concept/")}">Phase 1 docs</a>
+            <a class="footer-link" href="${url("Phase-2/eer-diagram/")}">Phase 2 docs</a>
+            <a class="footer-link" href="${url("Phase-3/relational-schema/")}">Phase 3 docs</a>
+            <a class="footer-link" href="${url("Phase-4/sql-ddl/")}">Phase 4 docs</a>
           </div>
 
           <div class="footer-col footer-col--panel">

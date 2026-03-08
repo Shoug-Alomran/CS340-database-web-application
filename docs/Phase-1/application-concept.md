@@ -7,6 +7,7 @@ This phase defines the system purpose, scope, and intended user interaction mode
 
 [Requirements](../requirements/){ .md-button .md-button--primary }
 [System Architecture](../architecture/){ .md-button }
+[Download Phase 1 Report](/Phase-1/report.pdf){ .md-button }
 
 </div>
 </div>

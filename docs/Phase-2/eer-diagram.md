@@ -9,6 +9,7 @@ The model captures entities, attributes, relationships, and structural constrain
 
 [Design Explanation](../design-explanation/){ .md-button .md-button--primary }
 [Phase 3 — Logical Design](../../Phase-3/relational-schema/){ .md-button }
+[Download Phase 2 Report](/Phase-2/report.pdf){ .md-button }
 
 </div>
 </div>

@@ -6,7 +6,7 @@
 This section defines the project team structure, communication workflow, and module ownership distribution for the CS340 Database Web Application.
 
 [Project Idea](../project-idea/){ .md-button .md-button--primary }
-[Project Plan Dashboard](./Project%20plan.html){ .md-button }
+[Project Plan Dashboard](/Phase-0/project-plan.html){ .md-button }
 
 </div>
 </div>
@@ -67,7 +67,7 @@ Clear communication channels were established to ensure coordination and documen
 Detailed responsibilities and phase-based task distribution are maintained in the interactive dashboard.
 
 **Roles & Tasks Dashboard:**  
-[Open the Roles Dashboard](./Project%20plan.html)
+[Open the Roles Dashboard](/Phase-0/project-plan.html)
 
 > The dashboard contains phase-by-phase responsibilities (Phase 2–5) per member and serves as the official source of task ownership.
 
