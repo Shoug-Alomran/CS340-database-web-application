@@ -55,12 +55,12 @@ nav:
       - Requirements: Phase-1/requirements.md
       - System Architecture: Phase-1/architecture.md
       - UI Wireframes: Phase-1/ui-wireframes.md
-      - Report: Phase-1/report.md
+      - Report: Phase-1/report.pdf
 
   - Phase 2 - Conceptual Design:
       - EER Diagram: Phase-2/eer-diagram.md
       - Design Explanation: Phase-2/design-explanation.md
-      - Report: Phase-2/report.md
+      - Report: Phase-2/report.pdf
 
   - Phase 3 - Logical Design:
       - Relational Schema: Phase-3/relational-schema.md
@@ -68,13 +68,13 @@ nav:
       - Mapping Explanation: Phase-3/mapping.md
       - Constraints: Phase-3/constraints.md
       - Assumptions: Phase-3/assumptions.md
-      - Report: Phase-3/report.md
+      - Report: Phase-3/report.pdf
 
   - Phase 4 - Database Implementation:
       - SQL DDL Scripts: Phase-4/sql-ddl.md
       - Sample Data: Phase-4/sample-data.md
       - Constraints & Integrity: Phase-4/constraints.md
-      - Report: Phase-4/report.md
+      - Report: Phase-4/report.pdf
 
   - Phase 5 - Application:
       - Backend Logic: Phase-5/backend.md
