@@ -382,7 +382,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../backend/" class="md-tabs__link">
+        <a href="../overview/" class="md-tabs__link">
           
   
   
@@ -1518,6 +1518,8 @@
       
         
       
+        
+      
     
     
     
@@ -1565,6 +1567,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1625,10 +1655,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
             
   
   
@@ -1646,8 +1676,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2550,7 +2580,7 @@
     
     
       <li class="md-path__item">
-        <a href="../backend/" class="md-path__link">
+        <a href="../overview/" class="md-path__link">
           
   <span class="md-ellipsis">
     Phase 5 - Application
@@ -2602,110 +2632,130 @@
 <div class="phase-refresh">
 <h2 id="query-catalog">Query Catalog<a class="headerlink" href="#query-catalog" title="Permanent link">&para;</a></h2>
 <h3 id="q01-count-users">q01 — Count users<a class="headerlink" href="#q01-count-users" title="Permanent link">&para;</a></h3>
+<p>Returns the total number of users registered in the system.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_users</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="k">User</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q02-list-latest-users">q02 — List latest users<a class="headerlink" href="#q02-list-latest-users" title="Permanent link">&para;</a></h3>
+<p>Retrieves the ten most recently created user records ordered by creation date.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="n">phone_number</span><span class="p">,</span><span class="w"> </span><span class="n">created_at</span>
 <span class="k">FROM</span><span class="w"> </span><span class="k">User</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">created_at</span><span class="w"> </span><span class="k">DESC</span>
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q03-search-users-by-email">q03 — Search users by email<a class="headerlink" href="#q03-search-users-by-email" title="Permanent link">&para;</a></h3>
+<p>Searches for users whose email addresses match a specified keyword or pattern.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
 <span class="k">FROM</span><span class="w"> </span><span class="k">User</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="s1">&#39;%&#39;</span><span class="p">,</span><span class="w"> </span><span class="o">?</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;%&#39;</span><span class="p">)</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q04-count-family-members">q04 — Count family members<a class="headerlink" href="#q04-count-family-members" title="Permanent link">&para;</a></h3>
+<p>Calculates the total number of family member records stored in the database.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_family_members</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">FamilyMember</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q05-list-family-members-simple">q05 — List family members (simple)<a class="headerlink" href="#q05-list-family-members-simple" title="Permanent link">&para;</a></h3>
+<p>Retrieves a simple list of the most recently added family members.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">relationship</span><span class="p">,</span><span class="w"> </span><span class="n">date_of_birth</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">FamilyMember</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">member_id</span><span class="w"> </span><span class="k">DESC</span>
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q06-family-members-for-a-given-user">q06 — Family members for a given user<a class="headerlink" href="#q06-family-members-for-a-given-user" title="Permanent link">&para;</a></h3>
+<p>Displays all family members associated with a specific user account.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">relationship</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">FamilyMember</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">member_id</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q07-count-health-events">q07 — Count health events<a class="headerlink" href="#q07-count-health-events" title="Permanent link">&para;</a></h3>
+<p>Returns the total number of health events recorded in the system.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_health_events</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q08-list-events">q08 — List events<a class="headerlink" href="#q08-list-events" title="Permanent link">&para;</a></h3>
+<p>Retrieves recent health events together with their associated member, condition, severity, and date.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">event_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">severity</span><span class="p">,</span><span class="w"> </span><span class="n">event_date</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span>
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q09-events-by-severity">q09 — Events by severity<a class="headerlink" href="#q09-events-by-severity" title="Permanent link">&para;</a></h3>
+<p>Filters health events based on a specified severity level.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">event_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">severity</span><span class="p">,</span><span class="w"> </span><span class="n">event_date</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">severity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q10-list-conditions">q10 — List conditions<a class="headerlink" href="#q10-list-conditions" title="Permanent link">&para;</a></h3>
+<p>Returns all health conditions stored in the database in alphabetical order.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_name</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthCondition</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">condition_name</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q11-list-medical-history">q11 — List medical history<a class="headerlink" href="#q11-list-medical-history" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">event_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">diagnosis_date</span>
+<p>Retrieves recent medical history records ordered by event date.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">event_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">event_date</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">MedicalHistory</span>
-<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">diagnosis_date</span><span class="w"> </span><span class="k">DESC</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span>
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q12-history-for-one-member">q12 — History for one member<a class="headerlink" href="#q12-history-for-one-member" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">event_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">diagnosis_date</span><span class="p">,</span><span class="w"> </span><span class="n">notes</span>
+<p>Displays the medical history details of a specific family member.</p>
+<div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">event_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">event_date</span><span class="p">,</span><span class="w"> </span><span class="n">diagnosis</span><span class="p">,</span><span class="w"> </span><span class="n">treatment</span><span class="p">,</span><span class="w"> </span><span class="n">outcome</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">MedicalHistory</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">member_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
-<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">diagnosis_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q13-list-risk-alerts">q13 — List risk alerts<a class="headerlink" href="#q13-list-risk-alerts" title="Permanent link">&para;</a></h3>
+<p>Retrieves the latest risk alerts generated in the system.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">alert_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">risk_level</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">created_date</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">RiskAlert</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">created_date</span><span class="w"> </span><span class="k">DESC</span>
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">15</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q14-alerts-for-member">q14 — Alerts for member<a class="headerlink" href="#q14-alerts-for-member" title="Permanent link">&para;</a></h3>
+<p>Returns all risk alerts associated with a selected family member.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">alert_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">risk_level</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">created_date</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">RiskAlert</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">member_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">created_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q15-count-alerts-by-status">q15 — Count alerts by status<a class="headerlink" href="#q15-count-alerts-by-status" title="Permanent link">&para;</a></h3>
+<p>Groups risk alerts by status and counts the number of alerts in each category.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">RiskAlert</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">status</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q16-list-events-for-a-member">q16 — List events for a member<a class="headerlink" href="#q16-list-events-for-a-member" title="Permanent link">&para;</a></h3>
+<p>Retrieves all health events linked to a specific family member.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">event_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">severity</span><span class="p">,</span><span class="w"> </span><span class="n">event_date</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">member_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">?</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q17-list-high-severity-events">q17 — List High severity events<a class="headerlink" href="#q17-list-high-severity-events" title="Permanent link">&para;</a></h3>
+<p>Lists only health events marked as high severity.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">event_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">event_date</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">severity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;High&#39;</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q18-list-high-risk-alerts">q18 — List High risk alerts<a class="headerlink" href="#q18-list-high-risk-alerts" title="Permanent link">&para;</a></h3>
+<p>Retrieves alerts classified as high risk.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">alert_id</span><span class="p">,</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">status</span><span class="p">,</span><span class="w"> </span><span class="n">created_date</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">RiskAlert</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">risk_level</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;High&#39;</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">created_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q19-list-users-alphabetically">q19 — List users alphabetically<a class="headerlink" href="#q19-list-users-alphabetically" title="Permanent link">&para;</a></h3>
+<p>Lists users ordered alphabetically by last name and first name.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">email</span>
 <span class="k">FROM</span><span class="w"> </span><span class="k">User</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span>
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q20-list-family-members-alphabetically">q20 — List family members alphabetically<a class="headerlink" href="#q20-list-family-members-alphabetically" title="Permanent link">&para;</a></h3>
+<p>Lists family members in alphabetical order.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">relationship</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">FamilyMember</span>
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">last_name</span><span class="p">,</span><span class="w"> </span><span class="n">first_name</span>
@@ -2715,6 +2765,7 @@
 <ul>
 <li><code>?</code> indicates a parameterized value.</li>
 <li>Query IDs map directly to backend query constants for implementation traceability.</li>
+<li>The query descriptions in this section are aligned with the Phase 5 report appendix.</li>
 </ul>
 </div>
 

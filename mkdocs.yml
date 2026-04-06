@@ -77,11 +77,13 @@ nav:
       - Report: Phase-4/report.pdf
 
   - Phase 5 - Application:
+      - System Overview: Phase-5/overview.md
       - Backend Logic: Phase-5/backend.md
       - SQL Queries:
           - Basic Queries: Phase-5/basic-queries.md
           - Advanced Queries: Phase-5/advanced-queries.md
       - Frontend Interface: Phase-5/frontend.md
+      - Report: Phase-5/report.pdf
 
   - Sustainability:
       - Reflection: Sustainability/reflection.md

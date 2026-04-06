@@ -382,7 +382,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../backend/" class="md-tabs__link">
+        <a href="../overview/" class="md-tabs__link">
           
   
   
@@ -1518,6 +1518,8 @@
       
         
       
+        
+      
     
     
     
@@ -1565,6 +1567,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1625,10 +1655,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" checked>
         
           
-          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="">
             
   
   
@@ -1646,8 +1676,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_2">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -2550,7 +2580,7 @@
     
     
       <li class="md-path__item">
-        <a href="../backend/" class="md-path__link">
+        <a href="../overview/" class="md-path__link">
           
   <span class="md-ellipsis">
     Phase 5 - Application
@@ -2602,6 +2632,7 @@
 <div class="phase-refresh">
 <h2 id="query-catalog">Query Catalog<a class="headerlink" href="#query-catalog" title="Permanent link">&para;</a></h2>
 <h3 id="q21-join-user-familymember">q21 — Join User + FamilyMember<a class="headerlink" href="#q21-join-user-familymember" title="Permanent link">&para;</a></h3>
+<p>Joins the <code>User</code> and <code>FamilyMember</code> tables to show each user together with related family members.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">email</span><span class="p">,</span>
 <span class="w">       </span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">fm</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">fm</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">member_name</span><span class="p">,</span>
 <span class="w">       </span><span class="n">fm</span><span class="p">.</span><span class="n">relationship</span>
@@ -2610,12 +2641,14 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="k">DESC</span><span class="p">,</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q22-users-with-no-family-members">q22 — Users with no family members<a class="headerlink" href="#q22-users-with-no-family-members" title="Permanent link">&para;</a></h3>
+<p>Identifies users who do not have any associated family member records.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">email</span>
 <span class="k">FROM</span><span class="w"> </span><span class="k">User</span><span class="w"> </span><span class="n">u</span>
 <span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">FamilyMember</span><span class="w"> </span><span class="n">fm</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">user_id</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q23-family-size-per-user">q23 — Family size per user<a class="headerlink" href="#q23-family-size-per-user" title="Permanent link">&para;</a></h3>
+<p>Calculates the number of family members linked to each user and ranks users by family size.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">user_id</span><span class="p">,</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">email</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">family_count</span>
 <span class="k">FROM</span><span class="w"> </span><span class="k">User</span><span class="w"> </span><span class="n">u</span>
 <span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">FamilyMember</span><span class="w"> </span><span class="n">fm</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">user_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">.</span><span class="n">user_id</span>
@@ -2623,6 +2656,7 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">family_count</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q24-event-report-healthevent-familymember-healthcondition">q24 — Event report (HealthEvent + FamilyMember + HealthCondition)<a class="headerlink" href="#q24-event-report-healthevent-familymember-healthcondition" title="Permanent link">&para;</a></h3>
+<p>Joins health events with family members and condition information to produce a detailed event report.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">event_id</span><span class="p">,</span>
 <span class="w">       </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">fm</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">fm</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">family_member</span><span class="p">,</span>
 <span class="w">       </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_name</span><span class="p">,</span>
@@ -2635,6 +2669,7 @@
 <span class="k">LIMIT</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q25-events-per-condition">q25 — Events per condition<a class="headerlink" href="#q25-events-per-condition" title="Permanent link">&para;</a></h3>
+<p>Counts how many health events are associated with each condition.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_name</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_events</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span><span class="w"> </span><span class="n">he</span>
 <span class="k">JOIN</span><span class="w"> </span><span class="n">HealthCondition</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">condition_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_id</span>
@@ -2642,12 +2677,14 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_events</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q26-conditions-with-zero-events">q26 — Conditions with zero events<a class="headerlink" href="#q26-conditions-with-zero-events" title="Permanent link">&para;</a></h3>
+<p>Identifies conditions that currently have no related health event records.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_id</span><span class="p">,</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_name</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthCondition</span><span class="w"> </span><span class="n">hc</span>
 <span class="k">LEFT</span><span class="w"> </span><span class="k">JOIN</span><span class="w"> </span><span class="n">HealthEvent</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">condition_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_id</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">event_id</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q27-members-with-more-than-1-event">q27 — Members with more than 1 event<a class="headerlink" href="#q27-members-with-more-than-1-event" title="Permanent link">&para;</a></h3>
+<p>Finds family members who have more than one recorded health event.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">event_count</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span><span class="w"> </span><span class="n">he</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">member_id</span>
@@ -2655,6 +2692,7 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">event_count</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q28-latest-event-per-member">q28 — Latest event per member<a class="headerlink" href="#q28-latest-event-per-member" title="Permanent link">&para;</a></h3>
+<p>Retrieves the most recent health event for each family member.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="o">*</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span><span class="w"> </span><span class="n">he</span>
 <span class="k">JOIN</span><span class="w"> </span><span class="p">(</span>
@@ -2665,17 +2703,20 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q29-history-member-condition">q29 — History + member + condition<a class="headerlink" href="#q29-history-member-condition" title="Permanent link">&para;</a></h3>
+<p>Joins medical history with family members and condition data to provide a detailed medical history report.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">mh</span><span class="p">.</span><span class="n">event_id</span><span class="p">,</span>
 <span class="w">       </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">fm</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">fm</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">member_name</span><span class="p">,</span>
 <span class="w">       </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_name</span><span class="p">,</span>
-<span class="w">       </span><span class="n">mh</span><span class="p">.</span><span class="n">diagnosis_date</span><span class="p">,</span>
-<span class="w">       </span><span class="n">mh</span><span class="p">.</span><span class="n">notes</span>
+<span class="w">       </span><span class="n">mh</span><span class="p">.</span><span class="n">event_date</span><span class="p">,</span>
+<span class="w">       </span><span class="n">mh</span><span class="p">.</span><span class="n">diagnosis</span><span class="p">,</span>
+<span class="w">       </span><span class="n">mh</span><span class="p">.</span><span class="n">treatment</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">MedicalHistory</span><span class="w"> </span><span class="n">mh</span>
 <span class="k">JOIN</span><span class="w"> </span><span class="n">FamilyMember</span><span class="w"> </span><span class="n">fm</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">mh</span><span class="p">.</span><span class="n">member_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span>
 <span class="k">JOIN</span><span class="w"> </span><span class="n">HealthCondition</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">mh</span><span class="p">.</span><span class="n">condition_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_id</span>
-<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">mh</span><span class="p">.</span><span class="n">diagnosis_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">mh</span><span class="p">.</span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q30-diagnoses-per-condition">q30 — Diagnoses per condition<a class="headerlink" href="#q30-diagnoses-per-condition" title="Permanent link">&para;</a></h3>
+<p>Counts how many medical history records exist for each condition.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_name</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">diagnoses</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">MedicalHistory</span><span class="w"> </span><span class="n">mh</span>
 <span class="k">JOIN</span><span class="w"> </span><span class="n">HealthCondition</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">mh</span><span class="p">.</span><span class="n">condition_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_id</span>
@@ -2683,6 +2724,7 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">diagnoses</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q31-members-with-history-but-no-events">q31 — Members with history but no events<a class="headerlink" href="#q31-members-with-history-but-no-events" title="Permanent link">&para;</a></h3>
+<p>Identifies family members who have medical history records but no health event records.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">mh</span><span class="p">.</span><span class="n">member_id</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">MedicalHistory</span><span class="w"> </span><span class="n">mh</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
@@ -2691,6 +2733,7 @@
 <span class="p">);</span>
 </code></pre></div>
 <h3 id="q32-members-with-events-but-no-history">q32 — Members with events but no history<a class="headerlink" href="#q32-members-with-events-but-no-history" title="Permanent link">&para;</a></h3>
+<p>Identifies family members who have health event records but no medical history records.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">DISTINCT</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">member_id</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span><span class="w"> </span><span class="n">he</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
@@ -2699,6 +2742,7 @@
 <span class="p">);</span>
 </code></pre></div>
 <h3 id="q33-unresolved-alerts-per-member">q33 — Unresolved alerts per member<a class="headerlink" href="#q33-unresolved-alerts-per-member" title="Permanent link">&para;</a></h3>
+<p>Counts unresolved alerts for each family member.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">unresolved</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">RiskAlert</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="o">&lt;&gt;</span><span class="w"> </span><span class="s1">&#39;Resolved&#39;</span>
@@ -2707,6 +2751,7 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">unresolved</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q34-alert-work-queue">q34 — Alert work queue<a class="headerlink" href="#q34-alert-work-queue" title="Permanent link">&para;</a></h3>
+<p>Produces an alert work queue by joining alerts with family member data and sorting by risk priority and date.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">ra</span><span class="p">.</span><span class="n">alert_id</span><span class="p">,</span>
 <span class="w">       </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">fm</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">fm</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">member_name</span><span class="p">,</span>
 <span class="w">       </span><span class="n">ra</span><span class="p">.</span><span class="n">risk_level</span><span class="p">,</span>
@@ -2718,6 +2763,7 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">FIELD</span><span class="p">(</span><span class="n">ra</span><span class="p">.</span><span class="n">risk_level</span><span class="p">,</span><span class="s1">&#39;High&#39;</span><span class="p">,</span><span class="s1">&#39;Medium&#39;</span><span class="p">,</span><span class="s1">&#39;Low&#39;</span><span class="p">),</span><span class="w"> </span><span class="n">ra</span><span class="p">.</span><span class="n">created_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q35-members-with-no-alerts">q35 — Members with no alerts<a class="headerlink" href="#q35-members-with-no-alerts" title="Permanent link">&para;</a></h3>
+<p>Identifies family members who have never received a risk alert.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">last_name</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">FamilyMember</span><span class="w"> </span><span class="n">fm</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
@@ -2726,6 +2772,7 @@
 <span class="p">);</span>
 </code></pre></div>
 <h3 id="q36-conditions-with-above-average-events">q36 — Conditions with above-average events<a class="headerlink" href="#q36-conditions-with-above-average-events" title="Permanent link">&para;</a></h3>
+<p>Finds conditions whose number of events is higher than the average event count across all conditions.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_name</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">total_events</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span><span class="w"> </span><span class="n">he</span>
 <span class="k">JOIN</span><span class="w"> </span><span class="n">HealthCondition</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">condition_id</span>
@@ -2736,6 +2783,7 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">total_events</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q37-high-severity-events-with-member-condition">q37 — High severity events with member + condition<a class="headerlink" href="#q37-high-severity-events-with-member-condition" title="Permanent link">&para;</a></h3>
+<p>Retrieves high severity events together with member and condition details.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">event_id</span><span class="p">,</span>
 <span class="w">       </span><span class="n">CONCAT</span><span class="p">(</span><span class="n">fm</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="s1">&#39; &#39;</span><span class="p">,</span><span class="n">fm</span><span class="p">.</span><span class="n">last_name</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">member_name</span><span class="p">,</span>
 <span class="w">       </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_name</span><span class="p">,</span>
@@ -2747,6 +2795,7 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">event_date</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q38-average-onset-age-per-condition">q38 — Average onset age per condition<a class="headerlink" href="#q38-average-onset-age-per-condition" title="Permanent link">&para;</a></h3>
+<p>Calculates the average onset age for each condition based on recorded health events.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_name</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">he</span><span class="p">.</span><span class="n">onset_age</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">avg_onset_age</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span><span class="w"> </span><span class="n">he</span>
 <span class="k">JOIN</span><span class="w"> </span><span class="n">HealthCondition</span><span class="w"> </span><span class="n">hc</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">hc</span><span class="p">.</span><span class="n">condition_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">condition_id</span>
@@ -2755,6 +2804,7 @@
 <span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">avg_onset_age</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
 </code></pre></div>
 <h3 id="q39-members-with-at-least-one-high-risk-alert">q39 — Members with at least one HIGH risk alert<a class="headerlink" href="#q39-members-with-at-least-one-high-risk-alert" title="Permanent link">&para;</a></h3>
+<p>Identifies family members who have at least one alert marked as high risk.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">last_name</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">FamilyMember</span><span class="w"> </span><span class="n">fm</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
@@ -2763,6 +2813,7 @@
 <span class="p">);</span>
 </code></pre></div>
 <h3 id="q40-members-with-both-events-and-alerts">q40 — Members with both events and alerts<a class="headerlink" href="#q40-members-with-both-events-and-alerts" title="Permanent link">&para;</a></h3>
+<p>Identifies family members who have both recorded health events and risk alerts.</p>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span><span class="p">,</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">first_name</span><span class="p">,</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">last_name</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">FamilyMember</span><span class="w"> </span><span class="n">fm</span>
 <span class="k">WHERE</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">HealthEvent</span><span class="w"> </span><span class="n">he</span><span class="w"> </span><span class="k">WHERE</span><span class="w"> </span><span class="n">he</span><span class="p">.</span><span class="n">member_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fm</span><span class="p">.</span><span class="n">member_id</span><span class="p">)</span>
@@ -2770,8 +2821,9 @@
 </code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
 <ul>
-<li>This catalog mirrors backend query constants exactly (<code>q21</code>–<code>q40</code>).</li>
-<li>Advanced set covers joins, grouping, HAVING, subqueries, and EXISTS logic.</li>
+<li>This catalog mirrors backend query constants exactly (<code>q21</code> to <code>q40</code>).</li>
+<li>Advanced queries in this section cover joins, grouping, <code>HAVING</code>, subqueries, and <code>EXISTS</code> logic.</li>
+<li>Query descriptions in this section were expanded from the Phase 5 report appendix.</li>
 </ul>
 </div>
 
