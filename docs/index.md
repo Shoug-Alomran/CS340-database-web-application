@@ -42,22 +42,23 @@ hide:
 <div class="section-top team-heading"><div><span class="eyebrow">03 / THE PEOPLE</span><h2>Built together.</h2></div><p>Four contributors. One shared foundation.<br>Select a team member to meet the people behind the project.</p></div>
 </div>
 
-<div class="grid cards team-grid" markdown>
-
-- **Shoug Alomran**
-
-  Risk alerts & analysis
-
-- **Yara Albugami**
-
-  Appointments & awareness
-
-- **Rose Al Rakan**
-
-  Users & access control
-
-- **Raghad Abdulaziz**
-
-  Family & medical history
-
+<div class="grid cards team-grid">
+<ul>
+<li>
+<p><strong>Shoug Alomran</strong></p>
+<p>Risk alerts &amp; analysis</p>
+</li>
+<li>
+<p><strong>Yara Albugami</strong></p>
+<p>Appointments &amp; awareness</p>
+</li>
+<li>
+<p><strong>Rose Al Rakan</strong></p>
+<p>Users &amp; access control</p>
+</li>
+<li>
+<p><strong>Raghad Abdulaziz</strong></p>
+<p>Family &amp; medical history</p>
+</li>
+</ul>
 </div>

@@ -25,7 +25,6 @@ checked = footer_count = pages = 0
 for page in root.rglob('*.html'):
     parser = Links()
     parser.feed(page.read_text())
-    if not parser.footer_links: continue # Standalone reports have their own presentation layouts.
     pages += 1
     footer_count += sum(not urlsplit(h).scheme and not urlsplit(h).netloc and bool(urlsplit(h).path) for h in parser.footer_links)
     for href in parser.links:

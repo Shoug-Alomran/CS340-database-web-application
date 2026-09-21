@@ -9,7 +9,15 @@ config.site_description %}
 <meta property="og:description" content="{{ page_description }}" />
 <meta property="og:url" content="{{ canonical_url }}" />
 <meta property="og:site_name" content="{{ config.site_name }}" />
-<meta name="twitter:card" content="summary" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="og:image" content="{{ config.site_url.rstrip('/') }}/assets/social-banner.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="CS340 Data Systems — Every connection. A stronger foundation." />
+<meta name="twitter:image" content="{{ config.site_url.rstrip('/') }}/assets/social-banner.png" />
+<link rel="icon" sizes="32x32" href="{{ 'assets/favicon.ico' | url }}" />
+<link rel="icon" type="image/svg+xml" href="{{ 'assets/database.svg' | url }}" />
+<link rel="apple-touch-icon" href="{{ 'assets/apple-touch-icon.png' | url }}" />
 <meta name="twitter:title" content="{{ page_title }}" />
 <meta name="twitter:description" content="{{ page_description }}" />
 {% if seo_meta and seo_meta.robots %}
@@ -30,4 +38,25 @@ config.site_description %}
     }
   } | tojson }}
 </script>
+{% endblock %}
+
+{% block site_nav %}{% endblock %}
+
+{% block content %}
+  {% if not page.is_homepage and chapter %}
+  <div class="notebook" data-chapter="{{ chapter.number }}">
+    <div class="notebook-meta"><a href="{{ '' | url }}">CS340</a><span>/</span><span>{{ chapter.label }}</span><span class="notebook-kind">{{ chapter.kind }}</span></div>
+    {% if chapter.pages | length > 1 %}
+    <nav class="chapter-pages" aria-label="Pages in this phase">
+      {% for item in chapter.pages %}<a href="{{ item.url | url }}" {% if item.url == page.url %}aria-current="page"{% endif %}>{{ item.title }}</a>{% endfor %}
+    </nav>
+    {% endif %}
+    <div class="notebook-banner"><span class="eyebrow">{{ chapter.phase[2] if chapter.phase else 'THE THINKING BEHIND THE SYSTEM' }}</span><span>{% if chapter.kind == 'Report reader' %}PDF DOCUMENT{% else %}{{ chapter.minutes }} MIN READ{% endif %}{% if chapter.sections %} / {{ chapter.sections | length }} SECTIONS{% endif %}</span></div>
+    <div class="notebook-content">{{ super() }}</div>
+    <nav class="notebook-pagination" aria-label="Continue exploring">
+      {% if page.previous_page %}<a href="{{ page.previous_page.url | url }}"><small>← PREVIOUS NOTE</small><strong>{{ page.previous_page.title }}</strong></a>{% endif %}
+      {% if page.next_page %}<a href="{{ page.next_page.url | url }}"><small>NEXT NOTE →</small><strong>{{ page.next_page.title }}</strong></a>{% endif %}
+    </nav>
+  </div>
+  {% else %}{{ super() }}{% endif %}
 {% endblock %}

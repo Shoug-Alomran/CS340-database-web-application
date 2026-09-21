@@ -34,3 +34,12 @@
     document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
+/* The project library is a dropdown, with native keyboard-operable disclosure. */
+document.addEventListener('keydown', event => {
+  const menu = document.querySelector('.project-menu[open]');
+  if (event.key === 'Escape' && menu) { menu.open = false; menu.querySelector('summary').focus(); }
+});
+document.addEventListener('click', event => {
+  const menu = document.querySelector('.project-menu[open]');
+  if (menu && !menu.contains(event.target)) menu.open = false;
+});

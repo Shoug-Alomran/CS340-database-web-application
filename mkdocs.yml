@@ -11,15 +11,11 @@ theme:
   favicon: assets/database.svg
 
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.sections
     - navigation.indexes
     - navigation.top
     - navigation.path
     - search.suggest
     - content.code.copy
-    - toc.follow
   palette:
     - scheme: default
       primary: light green
@@ -109,11 +105,15 @@ plugins:
 
 hooks:
   - hooks/seo.py
+  - hooks/design.py
 
 extra_css:
   - styles/extra.css
+  - styles/refinement.css
 
 extra_javascript:
   - javascripts/cta-footer.js
   - javascripts/seo-cleanup.js
   - javascripts/team-profile.js
+  - javascripts/notebook.js
+  - javascripts/content-views.js

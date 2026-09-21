@@ -96,3 +96,25 @@ python3 scripts/check_site_links.py
 The deploy workflow runs both checks. The generated `site/` directory is tracked
 in this repository and should be regenerated after source changes. Animations
 respect the visitor’s reduced-motion preference.
+
+The header’s Explore menu provides access to the full project library without sidebars.
+Card groups use HTML lists to keep descriptions inside cards when Markdown
+formatters change indentation.
+
+Inner pages use `hooks/design.py`, `overrides/main.html`, and
+`docs/javascripts/notebook.js` for the contextual page navigation, searchable
+schema/query catalogs, and optional table-to-card views. Original Markdown
+content remains readable without JavaScript. Standalone diagram controls live
+in `docs/javascripts/artifacts.js`.
+
+Brand assets are in `docs/assets/`: `database.svg`, `favicon.ico`,
+`apple-touch-icon.png`, and `social-banner.png`. The banner is connected to
+Open Graph and Twitter preview metadata. To regenerate the raster brand assets,
+run `python3 scripts/create_brand_assets.py` on macOS with Pillow installed
+(the generator uses the system Arial and Georgia fonts).
+
+The current typography and content layouts are defined in
+`docs/styles/refinement.css`. `docs/javascripts/content-views.js` adds the compact
+page finder, normalization walkthrough, data dictionary inspector, workflow
+paths, architecture flow, and technical disclosures. Each enhanced view retains
+the source content, with full content available when JavaScript is disabled.

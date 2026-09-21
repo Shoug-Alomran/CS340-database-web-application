@@ -1,0 +1,18 @@
+/* Standalone diagram canvases and the project plan share the CS340 identity. */
+:root { --primary:#23664e; --primary-light:#41795e; --secondary:#eef3e9; --background:#f8f9f5; --surface:#f0f3ed; --text:#202d29; --text-light:#69766e; --border:#dce3d9; --card:#fff; }
+body { background:#f8f9f5; color:#202d29; font-family:Inter,Arial,sans-serif; padding:100px 28px 35px; display:block; }
+.artifact-nav { position:absolute; top:0; left:0; right:0; display:flex; justify-content:space-between; align-items:center; padding:22px 30px; border-bottom:1px solid #dce3d9; background:#f8f9f5; gap:20px; }
+.artifact-nav a { color:#23664e; text-decoration:none; font:12px Arial,sans-serif; }.artifact-nav a:first-child { font-weight:700; letter-spacing:.8px; }.artifact-nav a:focus-visible, .diagram-tools button:focus-visible { outline:2px solid #23664e; outline-offset:4px; }
+body > .container { margin:auto; background:#fff; border:1px solid #dce3d9; border-radius:15px; padding:35px; box-shadow:0 15px 50px #1b302509; }
+body h1, body .header h1 { font-family:Inter,Arial,sans-serif; color:#202d29; font-size:clamp(24px,3vw,40px); font-weight:600; letter-spacing:-1px; } .header { border-color:#dce3d9; } .subtitle { color:#69766e; }
+.diagram-canvas { overflow:auto; border:1px solid #dce3d9; border-radius:10px; background-color:#fafcf8; background-image:radial-gradient(#dce3d9 1px,transparent 1px); background-size:20px 20px; padding:20px; margin-top:15px; }
+.diagram-canvas > svg { max-width:none; width:100%; height:auto; display:block; }.diagram-wrap { background:transparent; border:0; padding:0; }
+.diagram-tools { display:flex; align-items:center; gap:9px; margin:25px 0 10px; }.diagram-tools > span { font:10px monospace; letter-spacing:.7px; color:#69766e; margin-right:auto; }.diagram-tools button { cursor:pointer; border:1px solid #dce3d9; border-radius:6px; background:#f0f3ed; color:#23664e; min-width:36px; padding:8px 12px; font:12px Arial,sans-serif; }.diagram-tools button:disabled { opacity:.4; cursor:default; }
+svg text { font-family:Arial,sans-serif; } svg .entity { fill:#e3eee0; stroke:#23664e; } svg .entity rect { fill:#e3eee0; stroke:#23664e; } svg .entity text, svg .entity-label { fill:#214c37; stroke:none; } svg .relationship, svg .relationship polygon { fill:#ebead5; stroke:#8a8961; } svg .relationship text, svg .relationship-label { fill:#5c5b36; stroke:none; } svg .attribute, svg .attribute ellipse { fill:#f3f6ef; stroke:#8ba184; } svg .attribute text, svg .attribute-label { fill:#364a30; stroke:none; }
+.legend { border:1px solid #dce3d9; border-radius:10px; background:#f0f3ed; padding:20px; }
+.dark-mode { --primary:#a3cfad; --primary-light:#b8d8b8; --background:#101a17; --surface:#1c2c24; --text:#e4ece2; --text-light:#a2b0a5; --border:#304238; --card:#17231e; background:var(--background); color:var(--text); }.dark-mode > .container { background:var(--card); border-color:var(--border); }.dark-mode h1,.dark-mode .header h1 { color:var(--text); }.dark-mode .artifact-nav { background:var(--background); border-color:var(--border); }.dark-mode .artifact-nav a { color:var(--primary); }
+@media(max-width:600px) { body { padding:88px 12px 20px; }body > .container { padding:20px 12px; }.artifact-nav { padding:20px 16px; }.artifact-nav a { font-size:10px; }.diagram-canvas { padding:10px; }.diagram-tools > span { font-size:8px; } }
+@media(prefers-reduced-motion:reduce) { * { animation:none !important; transition:none !important; } }
+/* Original diagrams used white labels; keep contrast on the new pale fills. */
+svg text, svg .entity-text, svg .relationship-text { fill:#294633 !important; }
+svg .cardinality-text, svg .cardinality { fill:#874631 !important; }
