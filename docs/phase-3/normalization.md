@@ -16,7 +16,6 @@ This section explains how the logical schema was normalized to reduce redundancy
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. Normalization Goal
 
 The database was designed so that each relation stores one main subject and each non-key attribute depends on the correct primary key. This improves data quality because repeated facts, such as health condition names or clinic details, are stored in their own tables instead of being copied across multiple records.
@@ -75,17 +74,17 @@ This prevents common anomalies:
 
 ## 5. Relation-Level Normalization Summary
 
-| Relation | Normalization Notes |
-|---|---|
-| `USER` | User identity and account details depend only on `user_id`; `email` is unique to avoid duplicate accounts. |
-| `CLINIC` | Clinic attributes depend only on `clinic_id`; appointment data is kept in a separate relation. |
-| `HEALTH_CONDITION` | Condition name, category, and description are stored once and referenced by medical/event records. |
-| `AWARENESS_CONTENT` | Content records are independent, and each content attribute depends only on `content_id`. |
-| `FAMILY_MEMBER` | Family member details depend on `member_id`; ownership is represented by `user_id` as a foreign key. |
-| `MEDICAL_HISTORY` | Event details depend on `event_id`; member and condition relationships are handled through foreign keys. |
-| `HEALTH_EVENT` | General event details depend on `event_id`; optional links to members and conditions support flexible event logging. |
-| `RISK_ALERT` | Alert details depend on `alert_id`; the alert is connected to the affected family member through `member_id`. |
-| `APPOINTMENT` | Appointment details depend on `appointment_id`; user and clinic details are referenced instead of repeated. |
+| Relation            | Normalization Notes                                                                                                  |
+| ------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `USER`              | User identity and account details depend only on `user_id`; `email` is unique to avoid duplicate accounts.           |
+| `CLINIC`            | Clinic attributes depend only on `clinic_id`; appointment data is kept in a separate relation.                       |
+| `HEALTH_CONDITION`  | Condition name, category, and description are stored once and referenced by medical/event records.                   |
+| `AWARENESS_CONTENT` | Content records are independent, and each content attribute depends only on `content_id`.                            |
+| `FAMILY_MEMBER`     | Family member details depend on `member_id`; ownership is represented by `user_id` as a foreign key.                 |
+| `MEDICAL_HISTORY`   | Event details depend on `event_id`; member and condition relationships are handled through foreign keys.             |
+| `HEALTH_EVENT`      | General event details depend on `event_id`; optional links to members and conditions support flexible event logging. |
+| `RISK_ALERT`        | Alert details depend on `alert_id`; the alert is connected to the affected family member through `member_id`.        |
+| `APPOINTMENT`       | Appointment details depend on `appointment_id`; user and clinic details are referenced instead of repeated.          |
 
 ---
 

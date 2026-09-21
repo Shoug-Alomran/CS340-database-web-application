@@ -15,7 +15,6 @@ This section records assumptions used while finalizing Phase 3 logical design.
 
 <div class="phase-refresh" markdown>
 
-
 ## Assumptions
 
 - `USER.email` is the logical unique identifier for user-level identity checks.

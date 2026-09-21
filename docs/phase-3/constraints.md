@@ -16,7 +16,6 @@ This section summarizes the logical integrity constraints carried into implement
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. Keys and Uniqueness
 
 Primary keys:

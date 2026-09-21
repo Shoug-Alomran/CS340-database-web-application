@@ -18,11 +18,11 @@ The content presented here demonstrates structured database design, implementati
 
 This project was developed to demonstrate:
 
-- Relational database design principles  
-- Conceptual and logical data modeling  
-- SQL implementation (DDL and DML)  
-- Backend and application integration  
-- Structured technical documentation  
+- Relational database design principles
+- Conceptual and logical data modeling
+- SQL implementation (DDL and DML)
+- Backend and application integration
+- Structured technical documentation
 
 The system exists solely as part of a course requirement and serves as an educational artifact.
 
@@ -32,16 +32,16 @@ The system exists solely as part of a course requirement and serves as an educat
 
 This project is intended strictly for:
 
-- Academic evaluation  
-- Technical demonstration  
-- Learning and documentation purposes  
+- Academic evaluation
+- Technical demonstration
+- Learning and documentation purposes
 
 It is **not** a production system and must not be used for:
 
-- Real-world medical decision-making  
-- Clinical diagnostics  
-- Operational healthcare management  
-- Storage of real personal data  
+- Real-world medical decision-making
+- Clinical diagnostics
+- Operational healthcare management
+- Storage of real personal data
 
 ---
 
@@ -49,9 +49,9 @@ It is **not** a production system and must not be used for:
 
 All data presented in this system is:
 
-- Fictional  
-- Generated for demonstration purposes  
-- Non-identifiable  
+- Fictional
+- Generated for demonstration purposes
+- Non-identifiable
 
 No real individuals, medical records, or confidential data are used or stored within this project.
 
@@ -65,4 +65,4 @@ Unless otherwise specified by a project-level license, intellectual ownership re
 
 ---
 
-*This disclaimer applies to all project phases and associated documentation.*
+_This disclaimer applies to all project phases and associated documentation._

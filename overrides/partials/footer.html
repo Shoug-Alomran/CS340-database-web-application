@@ -1,0 +1,45 @@
+<footer class="md-footer studio-footer">
+  <div class="footer-main md-grid">
+    <div class="footer-intro">
+      <a class="footer-brand" href="{{ '' | url }}"
+        >CS340<span> / DATA SYSTEMS</span></a
+      >
+      <h2>Good systems start<br />with good foundations.</h2>
+      <p>
+        From the first relationship to the final query.<br />A database
+        engineering project, documented.
+      </p>
+      <a class="footer-contact" href="mailto:inquiry@shoug-tech.com"
+        >Let’s connect <span aria-hidden="true">↗</span></a
+      >
+    </div>
+    {% set groups = [ ('Explore',
+    [('Introduction','project-overview/introduction/'),('The
+    team','phase-0/team-formation/'),('Backend','phase-5/backend/'),('Frontend','phase-5/frontend/'),('Sustainability','sustainability/reflection/')]),
+    ('Project phases', [('00 · Proposal','phase-0/project-idea/'),('01 ·
+    Planning','phase-1/application-concept/'),('02 ·
+    Modeling','phase-2/eer-diagram/'),('03 ·
+    Schema','phase-3/relational-schema/'),('04 · SQL','phase-4/sql-ddl/'),('05 ·
+    Application','phase-5/overview/')]), ('Reports', [('Planning
+    report','phase-1/report/'),('Modeling report','phase-2/report/'),('Schema
+    report','phase-3/report/'),('SQL report','phase-4/report/'),('Application
+    report','phase-5/report/'),('References','appendix/references/')]) ] %} {%
+    for title, links in groups %}
+    <nav class="footer-col" aria-label="{{ title }}">
+      <h3>{{ title }}</h3>
+      {% for label, path in links %}<a href="{{ path | url }}">{{ label }}</a>{%
+      endfor %}
+    </nav>
+    {% endfor %}
+  </div>  <div class="footer-bottom md-grid">
+    <span>© 2026 Shoug Fawaz Alomran</span>
+    <nav aria-label="Policies">
+      <a href="{{ 'copyright/' | url }}">Copyright</a>
+      <a href="{{ 'privacy-notice/' | url }}">Privacy</a>
+      <a href="{{ 'academic-disclaimer/' | url }}">Academic disclaimer</a>
+    </nav>
+    <a href="https://blueprint.shoug-tech.com/" target="_blank" rel="noopener"
+      >Made by Blueprint ↗</a
+    >
+  </div>
+</footer>

@@ -16,7 +16,6 @@ This section explains how the conceptual EER model from Phase 2 was transformed 
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. Mapping Strategy
 
 The mapping process followed standard EER-to-relational rules:

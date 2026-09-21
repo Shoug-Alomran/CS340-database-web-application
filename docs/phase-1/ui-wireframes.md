@@ -17,32 +17,35 @@ Each interface component is mapped directly to database operations to ensure ali
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. Design Principles
 
 The prototype follows structured design principles to ensure database-driven consistency:
 
 <div class="grid cards" markdown>
 
--   :material-database-outline: **Database-First Interaction**
+- :material-database-outline: **Database-First Interaction**
 
-    ---
-    All screens map directly to database operations such as `INSERT`, `SELECT`, and `UPDATE`.
+  ***
 
--   :material-map-outline: **Minimal Navigation Depth**
+  All screens map directly to database operations such as `INSERT`, `SELECT`, and `UPDATE`.
 
-    ---
-    Core actions are accessible within 2–3 navigation levels to reduce complexity.
+- :material-map-outline: **Minimal Navigation Depth**
 
--   :material-account-lock-outline: **Role-Based Access**
+  ***
 
-    ---
-    Screens differ based on user roles (Citizen, Healthcare Provider, Administrator).
+  Core actions are accessible within 2–3 navigation levels to reduce complexity.
 
--   :material-cellphone: **Mobile-Friendly Layout**
+- :material-account-lock-outline: **Role-Based Access**
 
-    ---
-    Vertical-first design optimized for both mobile and web environments.
+  ***
+
+  Screens differ based on user roles (Citizen, Healthcare Provider, Administrator).
+
+- :material-cellphone: **Mobile-Friendly Layout**
+
+  ***
+
+  Vertical-first design optimized for both mobile and web environments.
 
 </div>
 
@@ -59,9 +62,9 @@ Each screen corresponds to defined database interactions.
 **Purpose:**  
 Authenticate users and assign roles.
 
-**Database Interaction:**  
+**Database Interaction:**
 
-- `SELECT` user credentials  
+- `SELECT` user credentials
 - Retrieve role from `USER`
 
 ---
@@ -71,10 +74,10 @@ Authenticate users and assign roles.
 **Purpose:**  
 Provide an overview of family health data and active alerts.
 
-**Database Interaction:**  
+**Database Interaction:**
 
-- `SELECT` from `FAMILY_MEMBER`  
-- `SELECT` from `ALERT`  
+- `SELECT` from `FAMILY_MEMBER`
+- `SELECT` from `ALERT`
 - `SELECT` from `APPOINTMENT`
 
 ---
@@ -84,11 +87,11 @@ Provide an overview of family health data and active alerts.
 **Purpose:**  
 Record family members and manage associated health information.
 
-**Database Interaction:**  
+**Database Interaction:**
 
-- `INSERT` into `FAMILY_MEMBER`  
-- `INSERT` into `HEALTH_EVENT`  
-- `UPDATE` existing records when edited  
+- `INSERT` into `FAMILY_MEMBER`
+- `INSERT` into `HEALTH_EVENT`
+- `UPDATE` existing records when edited
 
 ---
 
@@ -97,10 +100,10 @@ Record family members and manage associated health information.
 **Purpose:**  
 Display generated hereditary risk alerts and explanations.
 
-**Database Interaction:**  
+**Database Interaction:**
 
-- `SELECT` from `ALERT`  
-- Aggregation on `HEALTH_EVENT` to determine calculated risk level  
+- `SELECT` from `ALERT`
+- Aggregation on `HEALTH_EVENT` to determine calculated risk level
 
 ---
 
@@ -109,10 +112,10 @@ Display generated hereditary risk alerts and explanations.
 **Purpose:**  
 Schedule preventive screening appointments.
 
-**Database Interaction:**  
+**Database Interaction:**
 
-- `SELECT` from `CLINIC`  
-- `INSERT` into `APPOINTMENT`  
+- `SELECT` from `CLINIC`
+- `INSERT` into `APPOINTMENT`
 - Foreign key validation (`User ↔ Clinic`)
 
 ---
@@ -122,10 +125,10 @@ Schedule preventive screening appointments.
 **Purpose:**  
 Provide educational content and preventive checklists.
 
-**Database Interaction:**  
+**Database Interaction:**
 
-- `SELECT` from `AWARENESS_CONTENT`  
-- `SELECT` / `UPDATE` checklist progress  
+- `SELECT` from `AWARENESS_CONTENT`
+- `SELECT` / `UPDATE` checklist progress
 
 ---
 
@@ -134,10 +137,10 @@ Provide educational content and preventive checklists.
 **Purpose:**  
 Enable administrative management of system data.
 
-**Database Interaction:**  
+**Database Interaction:**
 
-- `INSERT`, `UPDATE`, and `DELETE` across multiple tables  
-- Role-Based Access Control (RBAC) enforcement  
+- `INSERT`, `UPDATE`, and `DELETE` across multiple tables
+- Role-Based Access Control (RBAC) enforcement
 
 The admin interface operates with elevated permissions and is restricted to authorized roles only.
 
@@ -147,15 +150,15 @@ The admin interface operates with elevated permissions and is restricted to auth
 
 This prototype represents:
 
-- Logical screen flow  
-- Database-aligned UI mapping  
-- Role-based structural design  
+- Logical screen flow
+- Database-aligned UI mapping
+- Role-based structural design
 
 It does **not** include:
 
-- Final styling implementation  
-- Animations or visual refinement  
-- Integration with external hospital systems  
+- Final styling implementation
+- Animations or visual refinement
+- Integration with external hospital systems
 
 The prototype exists solely to validate interaction logic prior to implementation.
 
@@ -165,9 +168,9 @@ The prototype exists solely to validate interaction logic prior to implementatio
 
 By defining UI wireframes aligned with database operations, this phase ensures:
 
-- Direct traceability between UI and schema  
-- Clear mapping of CRUD operations  
-- Structured role-based interaction flow  
+- Direct traceability between UI and schema
+- Clear mapping of CRUD operations
+- Structured role-based interaction flow
 
 These elements support smooth transition into conceptual modeling and database implementation phases.
 

@@ -25,10 +25,10 @@ The system:
 
 These decisions ensure that the database remains:
 
-- Maintainable over time  
-- Extensible for future features  
-- Resistant to data corruption  
-- Scalable without structural redesign  
+- Maintainable over time
+- Extensible for future features
+- Resistant to data corruption
+- Scalable without structural redesign
 
 By prioritizing correctness and structural clarity, the system reduces long-term maintenance costs and technical debt.
 
@@ -40,10 +40,10 @@ From a social perspective, the system promotes preventive healthcare awareness.
 
 The application:
 
-- Encourages structured tracking of family medical history  
-- Supports early identification of hereditary risk patterns  
-- Promotes informed decision-making  
-- Encourages proactive health management rather than reactive treatment  
+- Encourages structured tracking of family medical history
+- Supports early identification of hereditary risk patterns
+- Promotes informed decision-making
+- Encourages proactive health management rather than reactive treatment
 
 By improving access to organized health data, the system supports responsible and informed healthcare practices within families.
 
@@ -55,15 +55,15 @@ The modular, phase-based system design supports long-term adaptability.
 
 Key design choices include:
 
-- Clear separation between presentation, business logic, and data layers  
-- Independent modules (e.g., AwarenessContent, RiskAlert)  
-- Defined ownership and participation constraints  
+- Clear separation between presentation, business logic, and data layers
+- Independent modules (e.g., AwarenessContent, RiskAlert)
+- Defined ownership and participation constraints
 
 This structure allows:
 
-- Future feature additions (analytics, reporting, enhanced alerts)  
-- Independent module upgrades  
-- Reduced impact of system changes  
+- Future feature additions (analytics, reporting, enhanced alerts)
+- Independent module upgrades
+- Reduced impact of system changes
 
 Future developers can enhance specific components without redesigning the entire system architecture.
 
@@ -73,9 +73,9 @@ Future developers can enhance specific components without redesigning the entire
 
 Structured documentation across all phases ensures:
 
-- Clear traceability from conceptual model to physical implementation  
-- Reproducibility of database setup  
-- Ease of onboarding for new contributors  
+- Clear traceability from conceptual model to physical implementation
+- Reproducibility of database setup
+- Ease of onboarding for new contributors
 
 Comprehensive documentation supports long-term maintainability and academic transparency.
 
@@ -85,10 +85,10 @@ Comprehensive documentation supports long-term maintainability and academic tran
 
 Sustainability in this project is achieved through:
 
-- Structured and normalized data design  
-- Clear architectural separation  
-- Controlled constraint enforcement  
-- Modular extensibility  
-- Comprehensive documentation  
+- Structured and normalized data design
+- Clear architectural separation
+- Controlled constraint enforcement
+- Modular extensibility
+- Comprehensive documentation
 
 These elements collectively ensure that the system remains maintainable, extensible, and socially beneficial over time.

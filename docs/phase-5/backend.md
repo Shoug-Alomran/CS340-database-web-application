@@ -164,7 +164,7 @@ app.put("/api/users/:id", async (req, res) => {
     `UPDATE \`User\`
      SET first_name = ?, last_name = ?, email = ?, phone_number = ?
      WHERE user_id = ?`,
-    [first_name, last_name, email, phone_number, user_id]
+    [first_name, last_name, email, phone_number, user_id],
   );
 
   res.json({ affectedRows: result.affectedRows });
@@ -204,12 +204,12 @@ Backend logic is aligned with database constraints:
 
 The backend maps application actions directly to standard SQL operations:
 
-| Operation | SQL |
-| --- | --- |
-| Create | `INSERT` |
-| Read | `SELECT` |
-| Update | `UPDATE` |
-| Delete | `DELETE` |
+| Operation | SQL      |
+| --------- | -------- |
+| Create    | `INSERT` |
+| Read      | `SELECT` |
+| Update    | `UPDATE` |
+| Delete    | `DELETE` |
 
 In addition, the backend exposes the full query set `q01` to `q40`, demonstrating:
 

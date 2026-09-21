@@ -201,22 +201,19 @@
       .toUpperCase();
 
     dialog.querySelector(".member-modal__name").textContent = data.name;
-    renderPlaceholder(
-      dialog.querySelector(".member-modal__role"),
-      data.role
-    );
+    renderPlaceholder(dialog.querySelector(".member-modal__role"), data.role);
     renderPlaceholder(
       dialog.querySelector(".member-modal__dept"),
-      data.department
+      data.department,
     );
     renderPlaceholder(
       dialog.querySelector(".member-modal__affil"),
-      data.affiliation
+      data.affiliation,
     );
     renderPlaceholder(dialog.querySelector(".member-modal__bio"), data.bio);
     renderPlaceholder(
       dialog.querySelector(".member-modal__responsibilities"),
-      data.responsibilities
+      data.responsibilities,
     );
 
     const contribList = dialog.querySelector(".member-modal__contributions");
@@ -262,7 +259,7 @@
   function trapFocus(event) {
     const dialog = overlayEl.querySelector(".member-modal");
     const focusable = Array.from(
-      dialog.querySelectorAll(FOCUSABLE_SELECTOR)
+      dialog.querySelectorAll(FOCUSABLE_SELECTOR),
     ).filter((el) => el.offsetParent !== null);
     if (!focusable.length) return;
 
@@ -301,9 +298,7 @@
     document.addEventListener("keydown", keydownHandler, true);
 
     const focusTarget = overlayEl.querySelector(".member-modal");
-    const raf = prefersReducedMotion()
-      ? (fn) => fn()
-      : requestAnimationFrame;
+    const raf = prefersReducedMotion() ? (fn) => fn() : requestAnimationFrame;
     raf(() => focusTarget.focus());
   }
 
@@ -323,7 +318,7 @@
 
   function enhanceCards() {
     const cards = document.querySelectorAll(
-      ".team-grid > ul > li, .team-grid ul > li"
+      ".team-grid > ul > li, .team-grid ul > li",
     );
 
     cards.forEach((card) => {
@@ -342,7 +337,7 @@
       card.setAttribute("tabindex", "0");
       card.setAttribute(
         "aria-label",
-        `View full profile for ${MEMBERS[key].name}`
+        `View full profile for ${MEMBERS[key].name}`,
       );
       card.setAttribute("aria-haspopup", "dialog");
 

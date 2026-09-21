@@ -15,7 +15,6 @@ This section provides sample `INSERT` statements for validating table constraint
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. User
 
 ```sql

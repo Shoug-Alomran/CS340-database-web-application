@@ -29,7 +29,11 @@
     ensureMeta("robots", "noindex, follow");
 
     if (hasJunkParams || !current.searchParams.toString()) {
-      window.history.replaceState({}, document.title, `${current.pathname}${current.hash}`);
+      window.history.replaceState(
+        {},
+        document.title,
+        `${current.pathname}${current.hash}`,
+      );
     }
   }
 

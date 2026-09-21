@@ -87,10 +87,10 @@ Key API endpoints:
 
 The project intentionally uses two databases for different purposes:
 
-| Layer | Database | Purpose |
-| --- | --- | --- |
+| Layer          | Database              | Purpose                        |
+| -------------- | --------------------- | ------------------------------ |
 | Main Prototype | Supabase (PostgreSQL) | Real application functionality |
-| CS340 Demo | MySQL | Relational database coursework |
+| CS340 Demo     | MySQL                 | Relational database coursework |
 
 Supabase responsibilities:
 

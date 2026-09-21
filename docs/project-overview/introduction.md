@@ -20,25 +20,29 @@ The project demonstrates the complete lifecycle of relational database developme
 
 <div class="grid cards" markdown>
 
--   :material-database: **Relational Database Design**
+- :material-database: **Relational Database Design**
 
-    ---
-    Conceptual modeling (ER/EER), relational schema mapping, normalization, and integrity constraint enforcement.
+  ***
 
--   :material-code-tags: **SQL Implementation**
+  Conceptual modeling (ER/EER), relational schema mapping, normalization, and integrity constraint enforcement.
 
-    ---
-    Creation of tables, keys, constraints, and execution of structured queries through backend logic.
+- :material-code-tags: **SQL Implementation**
 
--   :material-web: **Full-Stack Integration**
+  ***
 
-    ---
-    Connecting a relational database to a functional web interface supporting CRUD operations.
+  Creation of tables, keys, constraints, and execution of structured queries through backend logic.
 
--   :material-file-document-outline: **Structured Documentation**
+- :material-web: **Full-Stack Integration**
 
-    ---
-    Phase-based documentation with reproducible design decisions, schema definitions, and implementation details.
+  ***
+
+  Connecting a relational database to a functional web interface supporting CRUD operations.
+
+- :material-file-document-outline: **Structured Documentation**
+
+  ***
+
+  Phase-based documentation with reproducible design decisions, schema definitions, and implementation details.
 
 </div>
 
@@ -46,11 +50,11 @@ The project demonstrates the complete lifecycle of relational database developme
 
 ## Objectives
 
-- Design a relational database from concept to implementation  
-- Enforce entity integrity and referential integrity  
-- Implement SQL queries within backend application logic  
-- Deliver a fully functional web-based CRUD system  
-- Apply structured, phase-based development methodology  
+- Design a relational database from concept to implementation
+- Enforce entity integrity and referential integrity
+- Implement SQL queries within backend application logic
+- Deliver a fully functional web-based CRUD system
+- Apply structured, phase-based development methodology
 
 ---
 
@@ -60,11 +64,11 @@ This project emphasizes **database correctness, integrity enforcement, and syste
 
 The focus is on:
 
-- Data modeling accuracy  
-- Proper schema design  
-- Constraint enforcement  
-- Query correctness  
-- Clean system architecture  
+- Data modeling accuracy
+- Proper schema design
+- Constraint enforcement
+- Query correctness
+- Clean system architecture
 
 All development follows structured academic guidelines to ensure clarity, reproducibility, and technical rigor.
 
@@ -74,33 +78,37 @@ All development follows structured academic guidelines to ensure clarity, reprod
 
 <div class="grid cards" markdown>
 
--   :material-numeric-1-circle: **Phase I — Requirements & Architecture**
+- :material-numeric-1-circle: **Phase I — Requirements & Architecture**
 
-    ---
-    Define system scope, identify stakeholders, develop usage scenarios, and design the system architecture and UI prototype.
+  ***
 
-    [Phase I Overview](../../phase-1/application-concept/)
+  Define system scope, identify stakeholders, develop usage scenarios, and design the system architecture and UI prototype.
 
--   :material-numeric-2-circle: **Phase II — Data Modeling**
+  [Phase I Overview](../../phase-1/application-concept/)
 
-    ---
-    Develop EER diagrams, relational schemas, normalization, and enforce structural integrity constraints.
+- :material-numeric-2-circle: **Phase II — Data Modeling**
 
-    [Phase II Overview](../../phase-2/eer-diagram/)
+  ***
 
--   :material-numeric-3-circle: **Phase III — Implementation**
+  Develop EER diagrams, relational schemas, normalization, and enforce structural integrity constraints.
 
-    ---
-    Implement the database using SQL, integrate with backend logic, and validate data operations.
+  [Phase II Overview](../../phase-2/eer-diagram/)
 
-    [Phase III Overview](../../phase-3/relational-schema/)
+- :material-numeric-3-circle: **Phase III — Implementation**
 
--   :material-numeric-4-circle: **Phase IV — Testing & Finalization**
+  ***
 
-    ---
-    Perform validation, query testing, system verification, and final documentation review.
+  Implement the database using SQL, integrate with backend logic, and validate data operations.
 
-    [Phase IV Overview](../../phase-4/sql-ddl/)
+  [Phase III Overview](../../phase-3/relational-schema/)
+
+- :material-numeric-4-circle: **Phase IV — Testing & Finalization**
+
+  ***
+
+  Perform validation, query testing, system verification, and final documentation review.
+
+  [Phase IV Overview](../../phase-4/sql-ddl/)
 
 </div>
 
@@ -110,25 +118,29 @@ All development follows structured academic guidelines to ensure clarity, reprod
 
 <div class="grid cards" markdown>
 
--   :material-database-outline: **Relational Database (MySQL)**
+- :material-database-outline: **Relational Database (MySQL)**
 
-    ---
-    Used to implement structured schema with primary keys, foreign keys, and constraints.
+  ***
 
--   :material-language-sql: **SQL**
+  Used to implement structured schema with primary keys, foreign keys, and constraints.
 
-    ---
-    Data Definition Language (DDL) and Data Manipulation Language (DML).
+- :material-language-sql: **SQL**
 
--   :material-web: **Backend + Web Interface**
+  ***
 
-    ---
-    Database-driven CRUD operations executed through application logic.
+  Data Definition Language (DDL) and Data Manipulation Language (DML).
 
--   :material-book-open-variant: **MkDocs (Material)**
+- :material-web: **Backend + Web Interface**
 
-    ---
-    Structured documentation framework for clean, academic project publication.
+  ***
+
+  Database-driven CRUD operations executed through application logic.
+
+- :material-book-open-variant: **MkDocs (Material)**
+
+  ***
+
+  Structured documentation framework for clean, academic project publication.
 
 </div>
 
@@ -136,19 +148,19 @@ All development follows structured academic guidelines to ensure clarity, reprod
 
 ## Team Collaboration
 
-- **GitHub + Documentation Website** — Version control and structured phase access  
-- **WhatsApp** — Coordination and quick clarifications  
-- **Google Docs** — Collaborative drafting and review  
+- **GitHub + Documentation Website** — Version control and structured phase access
+- **WhatsApp** — Coordination and quick clarifications
+- **Google Docs** — Collaborative drafting and review
 
 ---
 
 ## Individual Contributions (Phase I)
 
-| Member | Contribution |
-|--------|--------------|
-| **Yara Albugami** | Defined target users, usage scenarios, and system requirements. |
-| **Shoug Alomran** | Designed system architecture and UI wireframes; aligned interface with database operations. |
-| **Rose Al Rakan** | Defined core data requirements and supported documentation structure. |
-| **Raghad Abdulaziz** | Assisted with requirement refinement, system review, and documentation consistency. |
+| Member               | Contribution                                                                                |
+| -------------------- | ------------------------------------------------------------------------------------------- |
+| **Yara Albugami**    | Defined target users, usage scenarios, and system requirements.                             |
+| **Shoug Alomran**    | Designed system architecture and UI wireframes; aligned interface with database operations. |
+| **Rose Al Rakan**    | Defined core data requirements and supported documentation structure.                       |
+| **Raghad Abdulaziz** | Assisted with requirement refinement, system review, and documentation consistency.         |
 
 ---

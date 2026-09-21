@@ -2,7 +2,7 @@ name: Deploy MkDocs site to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -24,6 +24,8 @@ jobs:
           python-version: "3.x"
       - run: pip install mkdocs-material
       - run: mkdocs build --clean
+      - name: Check internal navigation links
+        run: python scripts/check_site_links.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

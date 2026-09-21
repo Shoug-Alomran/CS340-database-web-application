@@ -17,7 +17,6 @@ This phase implements the Phase 3 logical schema in MySQL using production-ready
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. Target DBMS
 
 - DBMS: MySQL

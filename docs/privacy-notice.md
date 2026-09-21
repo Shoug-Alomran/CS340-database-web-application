@@ -21,11 +21,11 @@ This website does **not** collect, store, or process personal data.
 
 Specifically:
 
-- No user accounts are created  
-- No authentication system is active on this documentation site  
-- No cookies are used for tracking purposes  
-- No analytics services are integrated  
-- No form submissions are stored in a database  
+- No user accounts are created
+- No authentication system is active on this documentation site
+- No cookies are used for tracking purposes
+- No analytics services are integrated
+- No form submissions are stored in a database
 
 This site functions strictly as a static academic documentation platform.
 
@@ -35,9 +35,9 @@ This site functions strictly as a static academic documentation platform.
 
 If you choose to contact the project author via email:
 
-- Communication is handled entirely through your own email provider  
-- Messages are not stored, processed, or tracked by this website  
-- No automated data collection occurs  
+- Communication is handled entirely through your own email provider
+- Messages are not stored, processed, or tracked by this website
+- No automated data collection occurs
 
 ---
 
@@ -45,8 +45,8 @@ If you choose to contact the project author via email:
 
 All data displayed within this project is:
 
-- Sample data created for demonstration purposes, or  
-- Mock data used strictly for academic evaluation  
+- Sample data created for demonstration purposes, or
+- Mock data used strictly for academic evaluation
 
 No real patient, medical, or personal records are used, stored, or processed.
 
@@ -56,8 +56,8 @@ No real patient, medical, or personal records are used, stored, or processed.
 
 This privacy notice applies only to:
 
-- The documentation website  
-- Its published project artifacts  
+- The documentation website
+- Its published project artifacts
 
 It does not apply to external platforms (e.g., GitHub, hosting providers, or email services), which are governed by their respective privacy policies.
 

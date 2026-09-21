@@ -17,12 +17,12 @@ This document defines the intellectual property protections, permitted usage con
 
 All materials published on this website, including but not limited to:
 
-- Software projects  
-- Source code  
-- Technical documentation  
-- System designs and diagrams  
-- Research content  
-- Written material  
+- Software projects
+- Source code
+- Technical documentation
+- System designs and diagrams
+- Research content
+- Written material
 
 are the intellectual property of **Shoug Fawaz Alomran** and are protected under applicable international copyright laws.
 
@@ -43,10 +43,10 @@ Permitted use does not transfer ownership rights.
 
 The following actions are strictly prohibited without explicit written authorization:
 
-- Reproduction or redistribution of complete projects  
-- Commercial use of any material  
-- Republishing content under another name or entity  
-- Claiming authorship of any part of this work  
+- Reproduction or redistribution of complete projects
+- Commercial use of any material
+- Republishing content under another name or entity
+- Claiming authorship of any part of this work
 
 Unauthorized use may constitute copyright infringement.
 
@@ -70,4 +70,4 @@ For permission requests, licensing inquiries, or legal clarifications:
 
 ---
 
-*Last updated: 2026*
+_Last updated: 2026_

@@ -15,27 +15,29 @@ This section defines the high-level architectural structure of the Sillah system
 
 <div class="phase-refresh" markdown>
 
-
 ## High-Level Architecture
 
 Sillah adopts a **three-layer (Layered) Architecture** to ensure clear separation of responsibilities, maintainability, and structured development.
 
 <div class="grid cards" markdown>
 
--   :material-monitor-dashboard: **Presentation Layer**
+- :material-monitor-dashboard: **Presentation Layer**
 
-    ---
-    Handles all user interactions, including user interfaces, form submissions, and display of system responses.
+  ***
 
--   :material-cogs: **Business Logic / Domain Layer**
+  Handles all user interactions, including user interfaces, form submissions, and display of system responses.
 
-    ---
-    Implements core system functionality, business rules, validation logic, and risk detection mechanisms.
+- :material-cogs: **Business Logic / Domain Layer**
 
--   :material-database-outline: **Data / Integration Layer**
+  ***
 
-    ---
-    Manages structured data storage using a relational database management system and supports potential future integration with external systems.
+  Implements core system functionality, business rules, validation logic, and risk detection mechanisms.
+
+- :material-database-outline: **Data / Integration Layer**
+
+  ***
+
+  Manages structured data storage using a relational database management system and supports potential future integration with external systems.
 
 </div>
 
@@ -47,9 +49,9 @@ Sillah follows the **Layered Architecture Pattern**.
 
 In this pattern:
 
-- Each layer communicates only with the layer directly below or above it  
-- Direct cross-layer access is restricted  
-- Responsibilities are clearly divided  
+- Each layer communicates only with the layer directly below or above it
+- Direct cross-layer access is restricted
+- Responsibilities are clearly divided
 
 This structure enhances modularity and simplifies maintenance.
 
@@ -77,10 +79,10 @@ The layered approach was selected for the following reasons:
 
 By adopting the Layered Architecture pattern, the system achieves:
 
-- Clear modular structure  
-- Logical isolation of business rules  
-- Structured database interaction  
-- Controlled data flow between components  
+- Clear modular structure
+- Logical isolation of business rules
+- Structured database interaction
+- Controlled data flow between components
 
 This architectural foundation supports the implementation phases that follow, particularly relational schema design and backend integration.
 

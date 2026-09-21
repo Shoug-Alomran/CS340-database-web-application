@@ -19,7 +19,6 @@ One-to-many (1:N) relationships are implemented using foreign keys on the N-side
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. Relations Overview
 
 ### 1.1 USER

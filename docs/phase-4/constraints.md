@@ -15,7 +15,6 @@ This section summarizes integrity constraints implemented in the physical MySQL 
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. Entity Integrity
 
 Primary keys are defined on all relations:

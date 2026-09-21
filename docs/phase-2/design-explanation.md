@@ -17,18 +17,17 @@ The objective of the conceptual design is to model the problem domain accurately
 
 <div class="phase-refresh" markdown>
 
-
 ## 1. Design Approach
 
 The EER model was developed using a **top-down design approach**, beginning with application requirements and identifying the core entities necessary to support system functionality.
 
 The design prioritizes:
 
-- Clear separation of responsibilities between entities  
-- Minimization of data redundancy  
-- Logical grouping of related information  
-- Enforced ownership and participation constraints  
-- Support for future system extensions  
+- Clear separation of responsibilities between entities
+- Minimization of data redundancy
+- Logical grouping of related information
+- Enforced ownership and participation constraints
+- Support for future system extensions
 
 The model focuses strictly on **conceptual structure** and excludes implementation details such as SQL constraints or indexing strategies.
 
@@ -44,9 +43,9 @@ The **User** entity represents registered system users who interact with the app
 
 It:
 
-- Stores identifying and contact information  
-- Acts as the root entity for managed data  
-- Owns multiple family members  
+- Stores identifying and contact information
+- Acts as the root entity for managed data
+- Owns multiple family members
 
 This reflects realistic family health management scenarios.
 
@@ -58,9 +57,9 @@ The **FamilyMember** entity represents individuals associated with a user.
 
 Separating this entity from User allows:
 
-- Representation of multiple relatives per user  
-- Tracking hereditary medical patterns  
-- Avoidance of duplication of user-level data  
+- Representation of multiple relatives per user
+- Tracking hereditary medical patterns
+- Avoidance of duplication of user-level data
 
 Each family member is owned by exactly one user.
 
@@ -72,9 +71,9 @@ The **MedicalHistory** entity stores historical medical records for family membe
 
 It supports:
 
-- Multiple records per family member  
-- Temporal tracking of medical conditions  
-- Flexible expansion for additional health attributes  
+- Multiple records per family member
+- Temporal tracking of medical conditions
+- Flexible expansion for additional health attributes
 
 This separation ensures normalized storage of health-related data.
 
@@ -86,9 +85,9 @@ The **HealthCondition** entity standardizes disease and condition definitions.
 
 This prevents repetition of condition names across medical records and enables:
 
-- Consistent referencing  
-- Easier updates to condition metadata  
-- Support for analytics and pattern detection  
+- Consistent referencing
+- Easier updates to condition metadata
+- Support for analytics and pattern detection
 
 ---
 
@@ -98,9 +97,9 @@ The **RiskAlert** entity represents automatically generated alerts based on dete
 
 It is modeled independently to support:
 
-- Alert lifecycle management (active, resolved)  
-- Historical alert tracking  
-- Future analytical extensions  
+- Alert lifecycle management (active, resolved)
+- Historical alert tracking
+- Future analytical extensions
 
 Alerts remain stored after resolution to preserve audit history.
 
@@ -112,9 +111,9 @@ Appointments are modeled independently and linked to clinics to reflect realisti
 
 This design allows:
 
-- Multiple appointments per user  
-- Centralized clinic information  
-- Flexibility for supporting different clinic types  
+- Multiple appointments per user
+- Centralized clinic information
+- Flexibility for supporting different clinic types
 
 Each appointment must be associated with both a user and a clinic.
 
@@ -126,9 +125,9 @@ The **AwarenessContent** entity stores educational materials and preventive info
 
 It is intentionally independent from medical records to ensure:
 
-- Modular content management  
-- Easy updates without affecting medical data  
-- Access by users without ownership dependency  
+- Modular content management
+- Easy updates without affecting medical data
+- Access by users without ownership dependency
 
 ---
 
@@ -136,15 +135,15 @@ It is intentionally independent from medical records to ensure:
 
 Primary keys uniquely identify each entity:
 
-| Entity | Primary Key | Notes |
-|--------|-------------|-------|
-| User | UserID | Root entity for managed data |
-| FamilyMember | FamilyMemberID | References User |
-| MedicalHistory | MedicalHistoryID | References FamilyMember and HealthCondition |
-| HealthCondition | ConditionID | Standardized condition registry |
-| Appointment | AppointmentID | References User and Clinic |
-| Clinic | ClinicID | Centralized clinic registry |
-| RiskAlert | AlertID | Tracks generated alerts |
+| Entity          | Primary Key      | Notes                                       |
+| --------------- | ---------------- | ------------------------------------------- |
+| User            | UserID           | Root entity for managed data                |
+| FamilyMember    | FamilyMemberID   | References User                             |
+| MedicalHistory  | MedicalHistoryID | References FamilyMember and HealthCondition |
+| HealthCondition | ConditionID      | Standardized condition registry             |
+| Appointment     | AppointmentID    | References User and Clinic                  |
+| Clinic          | ClinicID         | Centralized clinic registry                 |
+| RiskAlert       | AlertID          | Tracks generated alerts                     |
 
 Some attributes are **derived**, such as `Age` (calculated from `DateOfBirth`), and are not stored directly unless required for performance optimization.
 
@@ -155,21 +154,26 @@ Some attributes are **derived**, such as `Age` (calculated from `DateOfBirth`), 
 The conceptual model enforces realistic structural constraints:
 
 #### User → FamilyMember (1 : N)
-- Each family member must belong to exactly one user  
-- Total participation on FamilyMember  
+
+- Each family member must belong to exactly one user
+- Total participation on FamilyMember
 
 #### FamilyMember → MedicalHistory (1 : N)
-- Each medical history record must belong to exactly one family member  
-- Total participation on MedicalHistory  
+
+- Each medical history record must belong to exactly one family member
+- Total participation on MedicalHistory
 
 #### MedicalHistory → HealthCondition (N : 1)
-- Each medical history record references exactly one health condition  
+
+- Each medical history record references exactly one health condition
 
 #### User → Appointment (1 : N)
-- Each appointment must be scheduled by exactly one user  
+
+- Each appointment must be scheduled by exactly one user
 
 #### Appointment → Clinic (N : 1)
-- Each appointment must occur at exactly one clinic  
+
+- Each appointment must occur at exactly one clinic
 
 These participation constraints prevent orphan records and preserve ownership consistency.
 
@@ -179,10 +183,10 @@ These participation constraints prevent orphan records and preserve ownership co
 
 The conceptual model is based on the following assumptions:
 
-- A **FamilyMember** cannot exist without a managing **User**  
-- A **MedicalHistory** record requires both a **FamilyMember** and a **HealthCondition**  
-- A **RiskAlert** is preserved after resolution for audit and analytical purposes  
-- **AwarenessContent** is independent of user ownership  
+- A **FamilyMember** cannot exist without a managing **User**
+- A **MedicalHistory** record requires both a **FamilyMember** and a **HealthCondition**
+- A **RiskAlert** is preserved after resolution for audit and analytical purposes
+- **AwarenessContent** is independent of user ownership
 
 ---
 
@@ -190,10 +194,10 @@ The conceptual model is based on the following assumptions:
 
 The conceptual model established in Phase 2 provides the foundation for:
 
-- Mapping entities into relational tables  
-- Defining primary and foreign keys  
-- Applying normalization rules  
-- Enforcing integrity constraints  
+- Mapping entities into relational tables
+- Defining primary and foreign keys
+- Applying normalization rules
+- Enforcing integrity constraints
 
 These tasks will be completed in **Phase 3 — Logical Design**.
 

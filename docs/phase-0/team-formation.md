@@ -15,18 +15,17 @@ This section defines the project team structure, communication workflow, and mod
 
 <div class="phase-refresh" markdown>
 
-
 ## Team Members
 
 <div class="grid cards team-grid" markdown>
 
--   :material-account-circle: **Shoug Alomran**
+- :material-account-circle: **Shoug Alomran**
 
--   :material-account-circle: **Yara Albugami**
+- :material-account-circle: **Yara Albugami**
 
--   :material-account-circle: **Rose AlRakan**
+- :material-account-circle: **Rose AlRakan**
 
--   :material-account-circle: **Raghad Abdulaziz**
+- :material-account-circle: **Raghad Abdulaziz**
 
 </div>
 
@@ -38,25 +37,29 @@ Clear communication channels were established to ensure coordination and documen
 
 <div class="grid cards" markdown>
 
--   :material-message-text-outline: **Primary Channel — WhatsApp**
+- :material-message-text-outline: **Primary Channel — WhatsApp**
 
-    ---
-    Used for rapid coordination, updates, and clarification during development.
+  ***
 
--   :material-github: **Version Control — GitHub**
+  Used for rapid coordination, updates, and clarification during development.
 
-    ---
-    Repository management for documentation and project artifacts.
+- :material-github: **Version Control — GitHub**
 
--   :material-file-document-edit-outline: **Collaborative Drafting — Google Docs**
+  ***
 
-    ---
-    Used for drafting reports and reviewing deliverables before final submission.
+  Repository management for documentation and project artifacts.
 
--   :material-calendar-check-outline: **Meetings**
+- :material-file-document-edit-outline: **Collaborative Drafting — Google Docs**
 
-    ---
-    Weekly coordination meetings, with additional meetings scheduled during major project milestones.
+  ***
+
+  Used for drafting reports and reviewing deliverables before final submission.
+
+- :material-calendar-check-outline: **Meetings**
+
+  ***
+
+  Weekly coordination meetings, with additional meetings scheduled during major project milestones.
 
 </div>
 
@@ -79,25 +82,29 @@ Each team member is responsible for a core system module to ensure accountabilit
 
 <div class="grid cards" markdown>
 
--   :material-shield-account-outline: **Rose AlRakan — User & Access Control Module**
+- :material-shield-account-outline: **Rose AlRakan — User & Access Control Module**
 
-    ---
-    Authentication mechanisms, role-based access control (RBAC), and audit logging.
+  ***
 
--   :material-account-multiple-outline: **Raghad Abdulaziz — Family & Medical History Module**
+  Authentication mechanisms, role-based access control (RBAC), and audit logging.
 
-    ---
-    Family member relationships and structured medical history management.
+- :material-account-multiple-outline: **Raghad Abdulaziz — Family & Medical History Module**
 
--   :material-alert-outline: **Shoug Alomran — Risk Alerts & Analysis Module**
+  ***
 
-    ---
-    Risk rule logic, alert generation, aggregation, and data analysis.
+  Family member relationships and structured medical history management.
 
--   :material-calendar-outline: **Yara Albugami — Appointments, Clinics & Awareness Module**
+- :material-alert-outline: **Shoug Alomran — Risk Alerts & Analysis Module**
 
-    ---
-    Clinic browsing, appointment scheduling, and awareness content management.
+  ***
+
+  Risk rule logic, alert generation, aggregation, and data analysis.
+
+- :material-calendar-outline: **Yara Albugami — Appointments, Clinics & Awareness Module**
+
+  ***
+
+  Clinic browsing, appointment scheduling, and awareness content management.
 
 </div>
 
@@ -107,9 +114,9 @@ Each team member is responsible for a core system module to ensure accountabilit
 
 The team follows:
 
-- Phase-based responsibility allocation  
-- Internal review before submission  
-- Cross-verification of schema, constraints, and documentation  
+- Phase-based responsibility allocation
+- Internal review before submission
+- Cross-verification of schema, constraints, and documentation
 
 This structure ensures accountability, technical accuracy, and consistency across all project phases.
 
